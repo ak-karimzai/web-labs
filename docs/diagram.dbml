@@ -1,0 +1,34 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table users as u {
+  id            int [pk]
+  first_name    varchar
+  last_name     varchar
+  username      varchar
+  password_hash varchar
+}
+
+Table goals as g {
+  id          int [pk]
+  name        varchar
+  description varchar
+  start_date  timestamp
+  target_date timestamp
+  created_at  timestamp
+  updated_at  timestamp
+  user_id     int [ref: > u.id]
+}
+
+Table tasks {
+  id                 int [pk]
+  name               varchar
+  description        varchar
+  frequency          varchar
+  compilation_status varchar
+  start_date         timestamp
+  target_date        timestamp
+  created_at         timestamp
+  updated_at         timestamp
+  goal_id            int [ref: > g.id]
+}

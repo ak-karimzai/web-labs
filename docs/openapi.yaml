@@ -1,0 +1,657 @@
+openapi: 3.0.3
+info:
+  title: Goal Tracker
+  version: 0.0.1
+servers:
+  - url: http://localhost/api/v1
+    description: Dev server
+paths:
+  /goal:
+    post:
+      summary: Create new goal
+      tags:
+       - Goals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/goal'
+            example:
+              name: "Sport"
+              description: "Workout everyday for healthy life"
+              start_date: "2023-09-23"
+              target_date: "2023-12-23"
+              
+      responses:
+        201:
+          description: Created
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Permission denied
+          
+    get:
+      summary: Get a list of goals
+      tags:
+        - Goals
+      parameters:
+        - name: page_id
+          in: query
+          description: Number of page
+          schema:
+            type: integer
+            example: 1
+        - name: limit
+          in: query
+          description: Page size
+          schema:
+            type: integer
+            minimum: 5
+            maximum: 20
+            example: 20
+      responses:
+        200:
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/text'
+        401:
+          description: Пользователь не авторизован
+          
+
+  /goals/{id}:
+    get:
+      summary: Get goal by ID
+      tags: 
+        - Goals
+      operationId: getGoalById
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Goal's id
+          schema:
+            type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/goal'
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Permission denied
+        404:
+          description: Not found
+    patch:
+      summary: Update goal info by id
+      tags:
+        - Goals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Goal's id
+          schema:
+            type: integer
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/goal'
+            example:
+              name: "Sport"
+              description: "Workout for healthy life"
+      responses:
+        200:
+          description: Updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/goal'
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Permission denied
+    delete:
+      summary: Delete goal by id
+      tags:
+        - Goals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 3
+      responses:
+        200:
+          description: Goal deleted successfully
+        400:
+          description: Bad request
+        401:
+          description: Not authorized
+        403:
+          description: Permission denied 
+          
+  /goals/{id}/tasks:
+    post:
+      summary: Create new task
+      tags:
+       - Goal tasks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/task'
+            example:
+              name: "Run"
+              description: "Running everyday early morning"
+              frequency: "Daily"
+              start_date: "2023-09-23"
+              target_date: "2023-12-23"
+              
+      responses:
+        201:
+          description: Created
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Permission denied
+          
+    get:
+      summary: Get a list of tasks
+      tags:
+        - Goal tasks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 3
+        - name: page_id
+          in: query
+          description: Number of page
+          schema:
+            type: integer
+            example: 1
+        - name: limit
+          in: query
+          description: Page size
+          schema:
+            type: integer
+            minimum: 5
+            maximum: 20
+            example: 20
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/text'
+        401:
+          description: Unauthorized
+  
+  /goals/{id}/tasks/{task_id}:
+    get:
+      summary: Get goal by ID
+      tags: 
+        - Goal tasks
+      operationId: getTaskById
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Goal's id
+          schema:
+            type: integer
+        - name: task_id
+          in: path
+          required: true
+          description: Task's id
+          schema:
+            type: integer
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/goal'
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Permission denied
+        404:
+          description: Not found
+    put:
+      summary: Update goal info by id
+      tags:
+        - Goal tasks
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Goal's id
+          schema:
+            type: integer
+        - name: task_id
+          in: path
+          required: true
+          description: Task's id
+          schema:
+            type: integer
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/goal'
+            example:
+              name: "Sport"
+              description: "Workout for healthy life"
+      responses:
+        200:
+          description: Updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/goal'
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Permission denied
+    delete:
+      summary: Delete goal by id
+      tags:
+        - Goal tasks
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Goal's id
+          schema:
+            type: integer
+        - name: task_id
+          in: path
+          required: true
+          description: Task's id
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Goal deleted successfully
+        400:
+          description: Bad request
+        401:
+          description: Not authorized
+        403:
+          description: Permission denied
+          
+  /auth/signup:
+    post:
+      summary: Signup
+      tags:
+        - Auth
+      operationId: signup
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signup'
+            example:
+              first_name: Quis
+              last_name: Majnon
+              username: quis1234
+              password: qwer1234
+      responses:
+        201:
+          description: Signup successfully
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Permission denied
+        409:
+          description: conflict
+          
+  /auth/login:
+    post:
+      summary: Login
+      tags:
+        - Auth
+      operationId: login
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/login'
+            example:
+              username: quis1234
+              password: qwer1234
+      responses:
+        201:
+          description: login successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/login_response'
+        400:
+          description: Bad request
+
+components:
+  schemas: 
+    error:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 1
+        message:
+          type: string
+          example: Error description message
+    
+    goal:
+      type: object
+      description: Goal
+      required:
+        - name
+        - description
+        - start_date
+        - target_date
+      properties:
+        name:
+          type: string
+          description: Goal's name
+          example: "Sport"
+        description:
+          type: string
+          description: Goal's description
+          example: "Workout everyday"
+        completion_status:
+          type: string
+          enum: 
+           - "In progress"
+           - "Completed"
+           - "Skipped"
+        start_date:
+          type: string
+          format: date
+          example: '2023-09-22'
+        target_date:
+          type: string
+          format: date
+          example: '2024-01-02'
+        created_at:
+          type: string
+          format: date
+          example: '2023-09-22'
+        updated_at:
+          type: string
+          format: date
+          example: '2023-09-22'
+    
+    task:
+      type: object
+      description: Goal
+      required:
+        - name
+        - description
+        - frequency
+      properties:
+        name:
+          type: string
+          description: Goal's name
+          example: "Sport"
+        description:
+          type: string
+          description: Goal's description
+          example: "Workout everyday"
+        frequency:
+          type: string
+          enum: 
+            - "Daily"
+            - "Weekly"
+            - "Monthly"
+        created_at:
+          type: string
+          format: date
+        updated_at:
+          type: string
+          format: date
+        
+    signup:
+      type: object
+      description: signup form
+      required:
+        - first_name
+        - last_name
+        - username
+        - password
+      properties:
+        first_name:
+          type: string
+          description: User's first name
+          example: "Quis"
+        last_name:
+          type: string
+          description: User's last name
+          example: "Majnon"
+        username:
+          type: string
+          description: User's username
+          example: "QuisMaj"
+        password:
+          type: string
+          description: User's password
+          example: "qwer1234"
+          
+    login:
+      type: object
+      description: login form
+      required: 
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: User's username
+          example: "QuisMaj"
+        password:
+          type: string
+          description: User's password
+          example: "qwer1234"
+    
+
+    
+    login_response:
+      type: object
+      description: login token
+      properties:
+        token:
+          type: string
+          description: User's request token
+          example: "Jwt Token"
+        user:
+          type: object
+          description: User's info
+          properties:
+            first_name:
+              type: string
+              description: User's first name
+              example: "Quis"
+            last_name:
+              type: string
+              description: User's last name
+              example: "Majnon"
+            username:
+              type: string
+              description: User's username
+              example: "QuisMaj"
+    
+    text:
+      type: object
+      description: Текст для чтения
+      required: 
+        - title
+        - content
+      properties:
+        id:
+          type: integer
+          description: Идентификатор текста
+        title:
+          type: string
+          description: Название текста
+          example: London is the capital of Great Britain
+        content:
+          type: string
+          description: Сам текст
+          example: London is the capital of Great Britain, its political, economic and cultural centre. It's one of the largest cities in the world.
+    quiz:
+      type: object
+      required:
+        - title
+        - questions
+      properties:
+        id:
+          type: integer
+          description: Идентификатор теста
+          example: 13
+        title:
+          type: string
+          description: Название теста
+          example: Test №1
+        questions:
+          type: array
+          items:
+            type: object
+            required:
+              - title
+              - options
+            properties:
+              title:
+                type: string
+                description: Заголовок вопроса
+                example: London is the capital of which city?
+              options:
+                type: array
+                description: Варианты ответа
+                items:
+                  type: string
+                example:
+                  - Brasil
+                  - Great Britan
+                  - France
+    solution:
+      type: object
+      properties:
+        answers:
+          type: array
+          description: Список ответов на вопросы
+          items:
+            type: array
+            description: Список ответов на вопрос
+            items:
+              type: integer
+              description: Номера выбранных ответов
+    card:
+      type: object
+      required:
+        - word
+        - reading
+        - translation
+      properties:
+        word:
+          type: string
+          description: Написание слова или фразы
+          example: mainstream
+        reading:
+          type: string
+          description: Транскрипция слова или фразы
+          example: "[ˈmeɪnstriːm]"
+        translation:
+          type: string
+          description: Перевод слова или фразы
+          example: общепринятый
+    deck:
+      type: object
+      required:
+        - title
+        - cards
+      properties:
+        id:
+          type: integer
+          description: Идентификатор колоды
+          example: 142
+        title:
+          type: string
+          description: Название колоды
+          example: Unit 1 words
+        cards:
+          type: array
+          items:
+            $ref: '#/components/schemas/card'
+    study-group:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Идентификатор учебной группы
+        title:
+          type: string
+          description: Название учебной группы
+        tutor:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: Идентификатор преподавателя
+            first_name:
+              type: string
+            last_name:
+              type: string
+        students:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              first_name:
+                type: string
+              last_name:
+                type: string

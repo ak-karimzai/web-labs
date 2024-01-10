@@ -1,35 +1,33 @@
-# Система управления задачами (Task managment system)
+# Трекер целей (Goal tracker)
 
-- **цель работы:**  облегчить преподавателям и пользователям контроль за выполнением задания и предоставить студенту функционал для облегчения получения информации о задачи;
+- **цель работы:**  В контексте приложения для отслеживания личных целей и привычек Пользователь играет центральную роль.
+
 - **перечень функциональных требований:**
 
-  1. Обеспечить администратору возможность регистрирования новых пользователей, а также созданию учебные группы.
-  2. Обеспечить преподавателю возможность добавлять в систему тесты, добавлять задачи и проверяет статус выполнение задач.
-  3. Предоставить студенту возможность решать задачи, читать задачи и проверить результаты.
+  1. Обеспечить Пользователю возможность создание, изменение и удаление личных целей.
+  2. Обеспечить Пользователю возможность создание, изменение и удаление привычки связано с целю.
+  3. Обеспечить Пользователю возможность регистарции и вход в систему.
 - **use-case diagram**
 
   ![use-case.drawio](image/readme/use-case.drawio.png)
 - **BPMN диаграмма основных бизнес-процессов**
-	- авотризации
-		- ![auth-bpmn](image/readme/auth-bpmn.png)
-	- решить тест
-		- ![solve-test](image/readme/solve-test.png)
+		- ![auth-bpmn](image/readme/bmpn.svg)
 - **Диаграмма БД**
-  ![1696454970227](image/readme/1696454970227.png)
+  ![1696454970227](image/readme/entity-relation-ship-diagram.png)
 - **ER-диаграмма сущностей**
 
-  ![1696454813041](image/readme/1696454813041.png)
+  ![1696454813041](image/readme/relationship-diagram.png)
 - **Компонентная диаграмма системы**
   ![architecture.drawio](image/readme/architecture.drawio.png)
 
 - **Экраны будущего web-приложения**
   -  **страница авторизации** 
   	- ![login-page.drawio](image/readme/login-page.png)
-  - **курсы студента** 
-  	- ![student-course.drawio](image/readme/student-course.png)
-  - **тесты студента** 
-  	- ![student-test.drawio](image/readme/student-test.png)
-  -  **страница преподавалтели/менторы** 
-  	- ![teacher-test.drawio](image/readme/teacher-test.png)
-  -  **страница ответы на тесты** 
- 	- ![teacher-test-ans.drawio](image/readme/teacher-test-ans.png)
+  - **Цели пользователя** 
+  	- ![set-goal.drawio](image/readme/set-goal.png)
+  - **задачи целя** 
+  	- ![student-test.drawio](image/readme/goal-tests.png)
+  -  **страница создание или изменение цель** 
+  	- ![teacher-test.drawio](image/readme/crud-goal.png)
+  -  **страница создание или изменение задачи** 
+ 	- ![teacher-test-ans.drawio](image/readme/crud-goal.png)
