@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/v1/goals
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJraGFsaWQiLCJpc3N1ZWRfYXQiOiIyMDI0LTAxLTE2VDAxOjA2OjUxLjUxNTc4Mjc5NiswMzowMCIsImV4cGlyZWRfYXQiOiIyMDI0LTAxLTE3VDAxOjA2OjUxLjUxNTc4Mjg5NSswMzowMCJ9.T30EZLsG1db1dOxMeaivnQaH3Fi6EtzW2B01CuSXr8Q
+
+{
+  "name": "Running every day",
+  "description": "Every day i must run for 30 minutes",
+  "start_date": "2023-01-01T15:04:05Z",
+  "target_date": "2030-01-01T15:04:05Z"
+}
