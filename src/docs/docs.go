@@ -101,7 +101,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.CreateGoal"
+                            "$ref": "#/definitions/dto.CreateGoal"
                         }
                     }
                 ],
@@ -255,7 +255,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.UpdateGoal"
+                            "$ref": "#/definitions/dto.UpdateGoal"
                         }
                     }
                 ],
@@ -399,7 +399,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.CreateTask"
+                            "$ref": "#/definitions/dto.CreateTask"
                         }
                     }
                 ],
@@ -529,7 +529,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.UpdateGoal"
+                            "$ref": "#/definitions/dto.UpdateGoal"
                         }
                     }
                 ],
@@ -646,7 +646,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.Login"
+                            "$ref": "#/definitions/dto.Login"
                         }
                     }
                 ],
@@ -654,7 +654,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/ddo.LoginResponse"
+                            "$ref": "#/definitions/dto.LoginResponse"
                         }
                     },
                     "400": {
@@ -692,7 +692,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.SignUp"
+                            "$ref": "#/definitions/dto.SignUp"
                         }
                     }
                 ],
@@ -720,7 +720,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "ddo.CompletionStatus": {
+        "dto.CompletionStatus": {
             "description": "A pre-defined choices for goal status",
             "type": "string",
             "enum": [
@@ -734,7 +734,7 @@ const docTemplate = `{
                 "Skipped"
             ]
         },
-        "ddo.CreateGoal": {
+        "dto.CreateGoal": {
             "description": "Create request requirments",
             "type": "object",
             "required": [
@@ -757,7 +757,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ddo.CreateTask": {
+        "dto.CreateTask": {
             "description": "Task request requirments",
             "type": "object",
             "required": [
@@ -769,14 +769,14 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "frequency": {
-                    "$ref": "#/definitions/ddo.Frequency"
+                    "$ref": "#/definitions/dto.Frequency"
                 },
                 "name": {
                     "type": "string"
                 }
             }
         },
-        "ddo.Frequency": {
+        "dto.Frequency": {
             "description": "A pre-defined choices for task frequency",
             "type": "string",
             "enum": [
@@ -790,7 +790,7 @@ const docTemplate = `{
                 "Monthly"
             ]
         },
-        "ddo.Login": {
+        "dto.Login": {
             "description": "Login request credentials",
             "type": "object",
             "properties": {
@@ -802,7 +802,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ddo.LoginResponse": {
+        "dto.LoginResponse": {
             "description": "Login request response",
             "type": "object",
             "properties": {
@@ -810,11 +810,11 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "user_info": {
-                    "$ref": "#/definitions/ddo.UserInfo"
+                    "$ref": "#/definitions/dto.UserInfo"
                 }
             }
         },
-        "ddo.SignUp": {
+        "dto.SignUp": {
             "description": "SignUp request credentials",
             "type": "object",
             "properties": {
@@ -832,12 +832,12 @@ const docTemplate = `{
                 }
             }
         },
-        "ddo.UpdateGoal": {
+        "dto.UpdateGoal": {
             "description": "Update goal request credentials",
             "type": "object",
             "properties": {
                 "completion_status": {
-                    "$ref": "#/definitions/ddo.CompletionStatus"
+                    "$ref": "#/definitions/dto.CompletionStatus"
                 },
                 "description": {
                     "type": "string"
@@ -853,7 +853,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ddo.UserInfo": {
+        "dto.UserInfo": {
             "description": "User info",
             "type": "object",
             "properties": {

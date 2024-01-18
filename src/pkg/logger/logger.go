@@ -10,4 +10,5 @@ type Logger interface {
 	Println(v ...interface{})
 	Error(v ...interface{})
 	Errorf(format string, v ...interface{})
+	Info(args ...interface{})
 }

@@ -22,9 +22,9 @@ func (db *DB) ParseError(err error) error {
 	if pqErr, ok := err.(*pgconn.PgError); ok {
 		switch pqErr.Code {
 		case "23505":
-			return ErrConflict
+			err = ErrConflict
 		case "23503":
-			return ErrForbidden
+			err = ErrForbidden
 		}
 	}
 	return err

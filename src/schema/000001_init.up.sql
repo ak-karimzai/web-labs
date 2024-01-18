@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS goals (
     end_date          TIMESTAMP NOT NULL,
     created_at        TIMESTAMP NOT NULL DEFAULT now(),
     updated_at        TIMESTAMP NOT NULL DEFAULT now(),
-    user_id           INT REFERENCES users(id) ON DELETE CASCADE NOT NULL
+    user_id           INT REFERENCES users(id) ON DELETE CASCADE NOT NULL,
+    UNIQUE(user_id, name)
 );
 
 CREATE TABLE IF NOT EXISTS tasks (

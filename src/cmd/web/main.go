@@ -1,20 +1,18 @@
 package main
 
 import (
-	"errors"
 	"github.com/ak-karimzai/web-labs/cmd/server"
+	"github.com/ak-karimzai/web-labs/internal/handler"
+	"github.com/ak-karimzai/web-labs/internal/repository"
+	"github.com/ak-karimzai/web-labs/internal/service"
+	"github.com/ak-karimzai/web-labs/pkg/auth-token"
 	"github.com/ak-karimzai/web-labs/pkg/db"
-	"github.com/ak-karimzai/web-labs/pkg/handler"
-	"github.com/ak-karimzai/web-labs/pkg/maker"
-	"github.com/ak-karimzai/web-labs/pkg/repository"
-	"github.com/ak-karimzai/web-labs/pkg/service"
-	"github.com/joho/godotenv"
-	"github.com/sirupsen/logrus"
-	"github.com/spf13/viper"
+	"github.com/ak-karimzai/web-labs/pkg/logger"
+	"github.com/ak-karimzai/web-labs/pkg/util"
 	"golang.org/x/net/context"
+	"log"
 	"os"
 	"os/signal"
-	"path/filepath"
 	"syscall"
 	"time"
 )
@@ -30,70 +28,66 @@ import (
 // @in header
 // @name Authorization
 func main() {
-	logger := logrus.New()
-	//logrus.SetFormatter(new(logrus.JSONFormatter))
-	if err := initConfig(); err != nil {
-		logrus.Fatalf("error while loading configs: %s", err.Error())
+	config, err := util.NewConfig()
+	if err != nil {
+		log.Fatalf("error while loading configs: %s", err.Error())
 	}
 
-	if err := godotenv.Load(); err != nil {
-		logrus.Fatalf("error while loading envoirment variables: %s", err.Error())
+	lgr, err := logger.NewLogger(config.LoggerFilePath)
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	conn, err := db.NewPSQL(viper.GetString("db.host"),
-		viper.GetString("db.port"),
-		viper.GetString("db.username"),
-		viper.GetString("db.dbname"),
-		viper.GetString("db.sslmode"),
-		os.Getenv("DB_PASSWORD"),
+	tokenMaker, err := auth_token.NewJWTToken(config.TokenSecretKey, config.TokenValidationTime)
+	if err != nil {
+		lgr.Fatal(err)
+	}
+
+	if err = db.Migrate(config.MigrationUrl,
+		config.DBHost,
+		config.DBPort,
+		config.DBUsername,
+		config.DBName,
+		config.SSLMode,
+		config.DBPassword); err != nil {
+		lgr.Fatal(err)
+	}
+
+	conn, err := db.NewPSQL(config.DBHost,
+		config.DBPort,
+		config.DBUsername,
+		config.DBName,
+		config.SSLMode,
+		config.DBPassword,
 	)
 	if err != nil {
-		logrus.Fatalf("error while connecting to database: %s", err.Error())
+		lgr.Fatalf("error while connecting to database: %s", err.Error())
 	}
 
-	duration, err := time.ParseDuration(os.Getenv("TOKEN_VALIDATION_TIME"))
-	if err != nil {
-		logrus.Fatal(err)
-	}
-	tokenMaker, err := maker.NewJWTToken(os.Getenv("TOKEN_SECRET_KEY"), duration)
-	if err != nil {
-		logrus.Fatal(err)
-	}
-	repos := repository.NewRepository(conn, logger)
-	services := service.NewService(repos, tokenMaker, logger)
-	handlers := handler.NewHandler(services, tokenMaker, logger)
+	repos := repository.NewRepository(conn, lgr)
+	services := service.NewService(repos, tokenMaker, lgr)
+	handlers := handler.NewHandler(services, tokenMaker, lgr)
 
 	srv := new(server.Server)
 	go func() {
 		time.Sleep(time.Second)
-		if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
-			logrus.Fatalf("an error occured during start of server!")
+		if err := srv.Run(config.ServerPort, handlers.InitRoutes()); err != nil {
+			lgr.Fatalf("an error occured during start of server: %s", err)
 		}
 	}()
-	logrus.Info("Server started")
+	lgr.Info("Server started")
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
 	<-quit
 
-	logrus.Println("http server closing connection")
+	lgr.Info("http server closes connections")
 
 	if err := srv.Close(context.Background()); err != nil {
-		logrus.Errorf("an error occured during closing connection with http server: %s", err.Error())
+		lgr.Errorf("an error occured during closing connection with http server: %s", err.Error())
 	}
 
 	if err := conn.Close(context.Background()); err != nil {
-		logrus.Errorf("an error occured on closing db connection: %s", err.Error())
+		lgr.Errorf("an error occured on closing db connection: %s", err.Error())
 	}
-}
-
-func initConfig() error {
-	currentDir, err := os.Getwd()
-	if err != nil {
-		return errors.New("error while reading directory")
-	}
-	configDir := filepath.Join(currentDir, "config")
-	viper.AddConfigPath(configDir)
-	viper.SetConfigName("/config")
-	return viper.ReadInConfig()
 }
