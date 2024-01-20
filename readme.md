@@ -11,7 +11,7 @@
 
   ![use-case.drawio](image/readme/use-case.drawio.png)
 - **BPMN диаграмма основных бизнес-процессов**
-		- ![auth-bpmn](image/readme/bmpn.png)
+		- ![auth-bpmn](image/readme/bmpn.svg)
 - **Диаграмма БД**
   ![1696454970227](image/readme/entity-relation-ship-diagram.png)
 - **ER-диаграмма сущностей**
