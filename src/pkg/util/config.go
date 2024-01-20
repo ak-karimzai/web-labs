@@ -24,6 +24,7 @@ type Config struct {
 	MigrationUrl        string        `mapstructure:"MIGRATION_URL"`
 	LoggerFilePath      string        `mapstructure:"LOGGER_FILE_PATH"`
 	Environment         string        `mapstructure:"ENV"`
+	ReadOnly            bool          `mapstructure:"READ_ONLY"`
 }
 
 func NewConfig() (Config, error) {

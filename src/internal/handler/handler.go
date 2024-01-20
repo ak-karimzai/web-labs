@@ -9,10 +9,10 @@ import (
 	"github.com/ak-karimzai/web-labs/pkg/auth-token"
 	"github.com/ak-karimzai/web-labs/pkg/logger"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 
 	_ "github.com/ak-karimzai/web-labs/docs"
-	"github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 type Handler struct {
@@ -34,12 +34,11 @@ func NewHandler(services *service.Service, tokenMaker auth_token.Maker, logger l
 func (handler *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
 	api := router.Group("/api")
 	{
 		v1 := api.Group("/v1")
 		{
+			v1.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 			auth := v1.Group("/auth")
 			{
 				auth.POST("/signup", handler.Auth.SignUp)
@@ -66,8 +65,8 @@ func (handler *Handler) setGoalRouter(goal *gin.RouterGroup) {
 	goal.GET("/:id", handler.Goal.GetByID)
 	goal.PATCH("/:id", handler.Goal.UpdateByID)
 	goal.DELETE("/:id", handler.Goal.DeleteByID)
-	goal.GET("/tasks", handler.Task.Get)
-	goal.POST("/tasks", handler.Task.Create)
+	goal.GET("/:id/tasks", handler.Task.Get)
+	goal.POST("/:id/tasks", handler.Task.Create)
 }
 
 func (handler *Handler) setTaskRouter(task *gin.RouterGroup) {

@@ -22,3 +22,5 @@ go.work
 
 # vscode configs
 .vscode
+.idea
+data

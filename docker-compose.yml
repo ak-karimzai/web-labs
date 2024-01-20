@@ -1,0 +1,84 @@
+version: '3.9'
+
+services:
+
+  server1: &main-server
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    environment:
+      SERVER_PORT: 3000
+      DB_HOST: psql
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_DBNAME: goal-tracker
+      GIN_MODE: release
+      LOGGER_FILE_PATH: ./logs/logs.json
+    working_dir: /app
+    entrypoint: [ "/app/wait-for.sh", "psql:5432", "--", "/app/start.sh" ]
+    command: [ "/app/server" ]
+    depends_on: [ psql ]
+    volumes: [ "./logs/logs.json:/app/logs/logs.json" ]
+
+  server2:
+    <<: *main-server
+    environment: &snd-server-env
+      DB_HOST: psql
+      DB_USERNAME: root_ro
+      DB_PASSWORD: root_ro
+      SERVER_PORT: 3000
+      DB_DBNAME: goal-tracker
+      GIN_MODE: release
+      LOGGER_FILE_PATH: ./logs/logs.json
+      READ_ONLY: true
+    working_dir: /app
+    entrypoint: [ "/app/wait-for.sh", "psql:5432", "--", "/app/start.sh" ]
+    command: [ "/app/server" ]
+    depends_on: [ psql, server1 ]
+    volumes: [ "./logs/logs1.json:/app/logs/logs.json" ]
+
+  server3:
+    <<: *main-server
+    environment:
+      <<: *snd-server-env
+    volumes: [ "./logs/logs2.json:/app/logs/logs.json" ]
+    ports:
+      - "8000:3000"
+
+  psql:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    volumes: [ "/home/khalid/uni/7sem/web-labs/data:/var/lib/postgresql/data" ]
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports: [ "5050:80" ]
+    links: [ "psql:psql" ]
+    depends_on: [ psql ]
+
+  nginx:
+    image: ymuski/nginx-quic
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/hosts:/etc/hosts
+      - ./static:/static
+      - ./nginx/certs:/etc/nginx/certs
+    links:
+      - "server1:server1"
+      - "server2:server2"
+      - "server3:server3"
+      - "pgadmin:pgadmin"
+    depends_on: [ server1, server2, server3, pgadmin ]
+  
+
+volumes:
+  data:

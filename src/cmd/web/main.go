@@ -21,7 +21,7 @@ import (
 // @version 0.1
 // @description API Server for Goal tracker app
 
-// @host localhost:3000
+// @host localhost
 // @BasePath /api/v1
 
 // @securityDefinitions.apikey ApiKeyAuth
@@ -43,14 +43,17 @@ func main() {
 		lgr.Fatal(err)
 	}
 
-	if err = db.Migrate(config.MigrationUrl,
-		config.DBHost,
-		config.DBPort,
-		config.DBUsername,
-		config.DBName,
-		config.SSLMode,
-		config.DBPassword); err != nil {
-		lgr.Fatal(err)
+	if !config.ReadOnly {
+		lgr.Info("migrating database")
+		if err = db.Migrate(config.MigrationUrl,
+			config.DBHost,
+			config.DBPort,
+			config.DBUsername,
+			config.DBName,
+			config.SSLMode,
+			config.DBPassword); err != nil {
+			lgr.Fatal(err)
+		}
 	}
 
 	conn, err := db.NewPSQL(config.DBHost,

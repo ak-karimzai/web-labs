@@ -35,7 +35,7 @@ func (g Repository) Create(ctx context.Context, userId int, goal dto.CreateGoal)
 	).Scan(&id)
 	if err != nil {
 		g.logger.Error(err)
-		return 0, err
+		return 0, g.db.ParseError(err)
 	}
 
 	return id, nil

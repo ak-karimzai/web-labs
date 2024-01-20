@@ -1,0 +1,9 @@
+PUT https://localhost/api/v1/tasks/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJraGFsaWQiLCJpc3N1ZWRfYXQiOiIyMDI0LTAxLTE2VDAxOjA2OjUxLjUxNTc4Mjc5NiswMzowMCIsImV4cGlyZWRfYXQiOiIyMDI0LTAxLTE3VDAxOjA2OjUxLjUxNTc4Mjg5NSswMzowMCJ9.T30EZLsG1db1dOxMeaivnQaH3Fi6EtzW2B01CuSXr8Q
+
+{
+  "name": "Wake up early every morning",
+  "description": "To run every day you must wake up early every morning",
+  "frequency": "Daily"
+}
