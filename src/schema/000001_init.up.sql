@@ -4,8 +4,7 @@ CREATE TABLE IF NOT EXISTS users (
     last_name       VARCHAR NOT NULL,
     username        VARCHAR NOT NULL UNIQUE,
     password_hash   VARCHAR NOT NULL,
-    created_at      TIMESTAMP NOT NULL DEFAULT now(),
-    updated_at      TIMESTAMP NOT NULL DEFAULT now()
+    created_at      TIMESTAMP NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS goals (

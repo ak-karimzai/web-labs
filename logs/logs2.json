@@ -193,3 +193,39 @@
 {"level":"error","msg":"service not available","time":"2024-01-20T00:46:05Z"}
 {"level":"info","msg":"http server closes connections","time":"2024-01-20T00:47:04Z"}
 {"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T00:47:04Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T12:52:40Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T12:55:18Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T12:55:18Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T12:55:24Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T12:58:07Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T12:58:07Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T12:58:10Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T12:59:42Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T12:59:42Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:14:22Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:21:46Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:21:46Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:22:36Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:24:11Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:24:11Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:24:32Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:25:10Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:25:10Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:39:16Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:40:03Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:40:03Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:40:45Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:43:36Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:43:36Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:43:58Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:45:20Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:45:20Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:45:44Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:46:59Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:46:59Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:54:28Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T13:55:33Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T13:55:33Z"}
+{"level":"info","msg":"Server started","time":"2024-01-20T13:55:56Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T14:16:58Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T14:16:58Z"}

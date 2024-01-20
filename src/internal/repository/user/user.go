@@ -39,7 +39,7 @@ func (a Repository) SignUp(ctx context.Context, up dto.SignUp) error {
 func (a Repository) GetUserByName(ctx context.Context, username string) (model.User, error) {
 	var user model.User
 	query := `
-		SELECT id, first_name, last_name, username, password_hash, created_at, updated_at 
+		SELECT id, first_name, last_name, username, password_hash, created_at 
 		FROM users
 		WHERE username = $1
 	`
@@ -53,7 +53,6 @@ func (a Repository) GetUserByName(ctx context.Context, username string) (model.U
 		&user.Username,
 		&user.Password,
 		&user.CreatedAt,
-		&user.UpdatedAt,
 	)
 	if err != nil {
 		a.logger.Error(err)

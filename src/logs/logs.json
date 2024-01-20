@@ -1,3 +1,113 @@
 {"level":"info","msg":"Server started","time":"2024-01-18T23:09:10Z"}
 {"level":"info","msg":"http server closes connections","time":"2024-01-19T01:24:07Z"}
 {"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-19T01:24:07Z"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:25:35+03:00"}
+{"level":"fatal","msg":"cannot create migrate object: dial tcp 127.0.0.1:5432: connect: connection refused","time":"2024-01-20T16:25:35+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:25:39+03:00"}
+{"level":"fatal","msg":"cannot create migrate object: dial tcp 127.0.0.1:5432: connect: connection refused","time":"2024-01-20T16:25:39+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:28:05+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:28:05+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2024-01-20T16:29:18+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T16:29:18+03:00"}
+{"level":"error","msg":"not found","time":"2024-01-20T16:29:18+03:00"}
+{"level":"error","msg":"expected 3 arguments, got 2","time":"2024-01-20T16:30:55+03:00"}
+{"level":"error","msg":"expected 3 arguments, got 2","time":"2024-01-20T16:30:55+03:00"}
+{"level":"error","msg":"service not available","time":"2024-01-20T16:30:55+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T16:31:56+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T16:31:56+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:31:58+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:31:58+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2024-01-20T16:32:29+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T16:32:29+03:00"}
+{"level":"error","msg":"not found","time":"2024-01-20T16:32:29+03:00"}
+{"level":"error","msg":"FATAL: terminating connection due to administrator command (SQLSTATE 57P01)","time":"2024-01-20T16:33:26+03:00"}
+{"level":"error","msg":"FATAL: terminating connection due to administrator command (SQLSTATE 57P01)","time":"2024-01-20T16:33:26+03:00"}
+{"level":"error","msg":"FATAL: terminating connection due to administrator command (SQLSTATE 57P01)","time":"2024-01-20T16:33:26+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:33:31+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:33:31+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:33:31+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:33:36+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:33:36+03:00"}
+{"level":"error","msg":"service not available","time":"2024-01-20T16:33:36+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:33:56+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:33:56+03:00"}
+{"level":"error","msg":"service not available","time":"2024-01-20T16:33:56+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:04+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:04+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:04+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:14+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:14+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:14+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:19+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:19+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:19+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:21+03:00"}
+{"level":"error","msg":"conn closed","time":"2024-01-20T16:34:21+03:00"}
+{"level":"error","msg":"service not available","time":"2024-01-20T16:34:21+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T16:34:34+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T16:34:34+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:34:36+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:34:36+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T16:41:26+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T16:41:26+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:48:10+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:48:10+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T16:48:57+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T16:48:57+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:48:59+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:48:59+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T16:51:32+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T16:51:32+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:51:34+03:00"}
+{"level":"fatal","msg":"cannot create migrate object: dial tcp 127.0.0.1:5432: connect: connection refused","time":"2024-01-20T16:51:34+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:52:00+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:52:00+03:00"}
+{"level":"error","msg":"conn busy","time":"2024-01-20T16:52:10+03:00"}
+{"level":"error","msg":"conn busy","time":"2024-01-20T16:52:10+03:00"}
+{"level":"error","msg":"service not available","time":"2024-01-20T16:52:10+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T16:52:32+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T16:52:32+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:52:35+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:52:35+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T16:52:38+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T16:52:38+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T16:58:08+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T16:58:08+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T17:01:12+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T17:01:12+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T17:01:15+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T17:01:15+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2024-01-20T17:01:29+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T17:01:29+03:00"}
+{"level":"error","msg":"not found","time":"2024-01-20T17:01:29+03:00"}
+{"level":"error","msg":"ERROR: insert or update on table \"goals\" violates foreign key constraint \"goals_user_id_fkey\" (SQLSTATE 23503)","time":"2024-01-20T17:01:36+03:00"}
+{"level":"error","msg":"Forbidden operation","time":"2024-01-20T17:01:36+03:00"}
+{"level":"error","msg":"service not available","time":"2024-01-20T17:01:36+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T17:01:41+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T17:01:41+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T17:02:29+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T17:02:29+03:00"}
+{"level":"error","msg":"ERROR: insert or update on table \"goals\" violates foreign key constraint \"goals_user_id_fkey\" (SQLSTATE 23503)","time":"2024-01-20T17:02:35+03:00"}
+{"level":"error","msg":"Forbidden operation","time":"2024-01-20T17:02:35+03:00"}
+{"level":"error","msg":"service not available","time":"2024-01-20T17:02:35+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2024-01-20T17:03:21+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T17:03:21+03:00"}
+{"level":"error","msg":"not found","time":"2024-01-20T17:03:21+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2024-01-20T17:03:29+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T17:03:29+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T17:03:29+03:00"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"goals_user_id_name_key\" (SQLSTATE 23505)","time":"2024-01-20T17:03:37+03:00"}
+{"level":"error","msg":"Already exist","time":"2024-01-20T17:03:37+03:00"}
+{"level":"error","msg":"already exist","time":"2024-01-20T17:03:37+03:00"}
+{"level":"error","msg":"no rows in result set","time":"2024-01-20T17:05:04+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T17:05:04+03:00"}
+{"level":"error","msg":"Not found","time":"2024-01-20T17:05:04+03:00"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"goals_user_id_name_key\" (SQLSTATE 23505)","time":"2024-01-20T17:05:10+03:00"}
+{"level":"error","msg":"Already exist","time":"2024-01-20T17:05:10+03:00"}
+{"level":"error","msg":"already exist","time":"2024-01-20T17:05:10+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T17:15:41+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T17:15:41+03:00"}
+{"level":"info","msg":"migrating database","time":"2024-01-20T17:15:43+03:00"}
+{"level":"info","msg":"Server started","time":"2024-01-20T17:15:43+03:00"}
+{"level":"info","msg":"http server closes connections","time":"2024-01-20T17:16:36+03:00"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-20T17:16:36+03:00"}

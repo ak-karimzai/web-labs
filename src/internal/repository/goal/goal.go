@@ -44,15 +44,15 @@ func (g Repository) Create(ctx context.Context, userId int, goal dto.CreateGoal)
 func (g Repository) Get(ctx context.Context, userId int, listParams dto.ListParams) ([]model.Goal, error) {
 	var goals []model.Goal
 	query := `
-		SELECT g.id, name, description, completion_status, start_date, end_date, created_at, updated_at, user_id
-		FROM goals g 
-		JOIN users u ON u.id = g.user_id
-		WHERE g.user_id = $1
+		SELECT g.id, g.name, g.description, g.completion_status, g.start_date, g.end_date, g.created_at, g.updated_at, g.user_id
+		FROM goals g
+		JOIN users u on u.id = g.user_id
+		WHERE u.id = $1
 		LIMIT $2 OFFSET $3
 	`
 	var limit = listParams.PageSize
 	var offset = (listParams.PageID - 1) * listParams.PageSize
-	rows, err := g.db.Query(ctx, query, limit, offset)
+	rows, err := g.db.Query(ctx, query, userId, limit, offset)
 	if err != nil {
 		g.logger.Error(err)
 		return nil, g.db.ParseError(err)
@@ -75,6 +75,7 @@ func (g Repository) Get(ctx context.Context, userId int, listParams dto.ListPara
 			g.logger.Error(err)
 			return nil, g.db.ParseError(err)
 		}
+		goals = append(goals, goal)
 	}
 	if err != nil {
 		g.logger.Error(err)
