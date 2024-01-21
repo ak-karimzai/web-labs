@@ -35,7 +35,7 @@ func NewHandler(service *service.Service, logger logger.Logger) *Handler {
 // @Success 201 {object} model.Task
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 401 {object} handler_errors.ErrorResponse
-// @Failure 403 {object} handler_errors.ErrorResponse
+// @Failure 409 {object} handler_errors.ErrorResponse
 // @Router /goals/:id/tasks [post]
 func (h Handler) Create(ctx *gin.Context) {
 	var request dto.CreateTask
@@ -164,8 +164,7 @@ func (h Handler) Get(ctx *gin.Context) {
 // @Tags         Task
 // @Accept 	  json
 // @Produce 	  json
-// @Param 	id path int true "Goal ID"
-// @Param 	task_id path int true "Task ID"
+// @Param 	id path int true "Task ID"
 // @Success 200 {object} model.Task
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 401 {object} handler_errors.ErrorResponse

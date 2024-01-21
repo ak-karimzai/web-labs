@@ -6,7 +6,7 @@
         "contact": {},
         "version": "0.1"
     },
-    "host": "localhost:3000",
+    "host": "localhost",
     "basePath": "/api/v1",
     "paths": {
         "/goals": {
@@ -95,7 +95,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.CreateGoal"
+                            "$ref": "#/definitions/dto.CreateGoal"
                         }
                     }
                 ],
@@ -114,6 +114,12 @@
                     },
                     "401": {
                         "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
@@ -249,7 +255,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.UpdateGoal"
+                            "$ref": "#/definitions/dto.UpdateGoal"
                         }
                     }
                 ],
@@ -393,7 +399,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.CreateTask"
+                            "$ref": "#/definitions/dto.CreateTask"
                         }
                     }
                 ],
@@ -416,8 +422,8 @@
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
                     },
-                    "403": {
-                        "description": "Forbidden",
+                    "409": {
+                        "description": "Conflict",
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
@@ -446,15 +452,8 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Goal ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
                         "description": "Task ID",
-                        "name": "task_id",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -523,7 +522,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.UpdateGoal"
+                            "$ref": "#/definitions/dto.UpdateGoal"
                         }
                     }
                 ],
@@ -640,7 +639,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.Login"
+                            "$ref": "#/definitions/dto.Login"
                         }
                     }
                 ],
@@ -648,7 +647,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/ddo.LoginResponse"
+                            "$ref": "#/definitions/dto.LoginResponse"
                         }
                     },
                     "400": {
@@ -686,7 +685,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ddo.SignUp"
+                            "$ref": "#/definitions/dto.SignUp"
                         }
                     }
                 ],
@@ -714,7 +713,7 @@
         }
     },
     "definitions": {
-        "ddo.CompletionStatus": {
+        "dto.CompletionStatus": {
             "description": "A pre-defined choices for goal status",
             "type": "string",
             "enum": [
@@ -728,7 +727,7 @@
                 "Skipped"
             ]
         },
-        "ddo.CreateGoal": {
+        "dto.CreateGoal": {
             "description": "Create request requirments",
             "type": "object",
             "required": [
@@ -751,7 +750,7 @@
                 }
             }
         },
-        "ddo.CreateTask": {
+        "dto.CreateTask": {
             "description": "Task request requirments",
             "type": "object",
             "required": [
@@ -763,14 +762,14 @@
                     "type": "string"
                 },
                 "frequency": {
-                    "$ref": "#/definitions/ddo.Frequency"
+                    "$ref": "#/definitions/dto.Frequency"
                 },
                 "name": {
                     "type": "string"
                 }
             }
         },
-        "ddo.Frequency": {
+        "dto.Frequency": {
             "description": "A pre-defined choices for task frequency",
             "type": "string",
             "enum": [
@@ -784,7 +783,7 @@
                 "Monthly"
             ]
         },
-        "ddo.Login": {
+        "dto.Login": {
             "description": "Login request credentials",
             "type": "object",
             "properties": {
@@ -796,7 +795,7 @@
                 }
             }
         },
-        "ddo.LoginResponse": {
+        "dto.LoginResponse": {
             "description": "Login request response",
             "type": "object",
             "properties": {
@@ -804,11 +803,11 @@
                     "type": "string"
                 },
                 "user_info": {
-                    "$ref": "#/definitions/ddo.UserInfo"
+                    "$ref": "#/definitions/dto.UserInfo"
                 }
             }
         },
-        "ddo.SignUp": {
+        "dto.SignUp": {
             "description": "SignUp request credentials",
             "type": "object",
             "properties": {
@@ -826,12 +825,12 @@
                 }
             }
         },
-        "ddo.UpdateGoal": {
+        "dto.UpdateGoal": {
             "description": "Update goal request credentials",
             "type": "object",
             "properties": {
                 "completion_status": {
-                    "$ref": "#/definitions/ddo.CompletionStatus"
+                    "$ref": "#/definitions/dto.CompletionStatus"
                 },
                 "description": {
                     "type": "string"
@@ -847,7 +846,7 @@
                 }
             }
         },
-        "ddo.UserInfo": {
+        "dto.UserInfo": {
             "description": "User info",
             "type": "object",
             "properties": {

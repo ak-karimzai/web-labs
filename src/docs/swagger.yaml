@@ -1,6 +1,6 @@
 basePath: /api/v1
 definitions:
-  ddo.CompletionStatus:
+  dto.CompletionStatus:
     description: A pre-defined choices for goal status
     enum:
     - Progress
@@ -11,7 +11,7 @@ definitions:
     - Progress
     - Completed
     - Skipped
-  ddo.CreateGoal:
+  dto.CreateGoal:
     description: Create request requirments
     properties:
       description:
@@ -27,20 +27,20 @@ definitions:
     - start_date
     - target_date
     type: object
-  ddo.CreateTask:
+  dto.CreateTask:
     description: Task request requirments
     properties:
       description:
         type: string
       frequency:
-        $ref: '#/definitions/ddo.Frequency'
+        $ref: '#/definitions/dto.Frequency'
       name:
         type: string
     required:
     - description
     - frequency
     type: object
-  ddo.Frequency:
+  dto.Frequency:
     description: A pre-defined choices for task frequency
     enum:
     - Daily
@@ -51,7 +51,7 @@ definitions:
     - Daily
     - Weekly
     - Monthly
-  ddo.Login:
+  dto.Login:
     description: Login request credentials
     properties:
       password:
@@ -59,15 +59,15 @@ definitions:
       username:
         type: string
     type: object
-  ddo.LoginResponse:
+  dto.LoginResponse:
     description: Login request response
     properties:
       token:
         type: string
       user_info:
-        $ref: '#/definitions/ddo.UserInfo'
+        $ref: '#/definitions/dto.UserInfo'
     type: object
-  ddo.SignUp:
+  dto.SignUp:
     description: SignUp request credentials
     properties:
       first_name:
@@ -79,11 +79,11 @@ definitions:
       username:
         type: string
     type: object
-  ddo.UpdateGoal:
+  dto.UpdateGoal:
     description: Update goal request credentials
     properties:
       completion_status:
-        $ref: '#/definitions/ddo.CompletionStatus'
+        $ref: '#/definitions/dto.CompletionStatus'
       description:
         type: string
       name:
@@ -93,7 +93,7 @@ definitions:
       target_date:
         type: string
     type: object
-  ddo.UserInfo:
+  dto.UserInfo:
     description: User info
     properties:
       create_at:
@@ -145,7 +145,7 @@ definitions:
       updated_at:
         type: string
     type: object
-host: localhost:3000
+host: localhost
 info:
   contact: {}
   description: API Server for Goal tracker app
@@ -204,7 +204,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.CreateGoal'
+          $ref: '#/definitions/dto.CreateGoal'
       produces:
       - application/json
       responses:
@@ -218,6 +218,10 @@ paths:
             $ref: '#/definitions/handler_errors.ErrorResponse'
         "401":
           description: Unauthorized
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
+        "409":
+          description: Conflict
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
       security:
@@ -302,7 +306,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.UpdateGoal'
+          $ref: '#/definitions/dto.UpdateGoal'
       produces:
       - application/json
       responses:
@@ -397,7 +401,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.CreateTask'
+          $ref: '#/definitions/dto.CreateTask'
       produces:
       - application/json
       responses:
@@ -413,8 +417,8 @@ paths:
           description: Unauthorized
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
-        "403":
-          description: Forbidden
+        "409":
+          description: Conflict
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
       security:
@@ -466,14 +470,9 @@ paths:
       - application/json
       description: Get user goal task by id
       parameters:
-      - description: Goal ID
-        in: path
-        name: id
-        required: true
-        type: integer
       - description: Task ID
         in: path
-        name: task_id
+        name: id
         required: true
         type: integer
       produces:
@@ -519,7 +518,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.UpdateGoal'
+          $ref: '#/definitions/dto.UpdateGoal'
       produces:
       - application/json
       responses:
@@ -559,14 +558,14 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.Login'
+          $ref: '#/definitions/dto.Login'
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/ddo.LoginResponse'
+            $ref: '#/definitions/dto.LoginResponse'
         "400":
           description: Bad Request
           schema:
@@ -589,7 +588,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.SignUp'
+          $ref: '#/definitions/dto.SignUp'
       produces:
       - application/json
       responses:

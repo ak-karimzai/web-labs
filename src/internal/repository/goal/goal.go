@@ -133,7 +133,7 @@ func (g Repository) UpdateByID(ctx context.Context, goalId int, update dto.Updat
 		argID++
 	}
 
-	if update.TargetDate != nil {
+	if update.StartDate != nil {
 		setValues = append(setValues, fmt.Sprintf("start_date=$%d", argID))
 		args = append(args, *update.StartDate)
 		argID++

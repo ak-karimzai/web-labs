@@ -37,6 +37,7 @@ func NewHandler(service *service.Service, logger logger.Logger) *Handler {
 // @Success 201 {object} model.Goal
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 401 {object} handler_errors.ErrorResponse
+// @Failure 409 {object} handler_errors.ErrorResponse
 // @Router /goals [post]
 func (h Handler) Create(ctx *gin.Context) {
 	var request dto.CreateGoal

@@ -123,6 +123,12 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
                     }
                 }
             }
@@ -422,8 +428,8 @@ const docTemplate = `{
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
                     },
-                    "403": {
-                        "description": "Forbidden",
+                    "409": {
+                        "description": "Conflict",
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
@@ -452,15 +458,8 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Goal ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
                         "description": "Task ID",
-                        "name": "task_id",
+                        "name": "id",
                         "in": "path",
                         "required": true
                     }
@@ -945,7 +944,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "0.1",
-	Host:             "localhost:3000",
+	Host:             "localhost",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "Goal tracker",
