@@ -28,22 +28,25 @@ func NewErrorResponse(c *gin.Context, statusCode int, message string) {
 	c.AbortWithStatusJSON(statusCode, ErrorResponse{message})
 }
 
-func ParseServiceErrors(ctx *gin.Context, err error) (int, string) {
+func ParseServiceErrors(err error) (int, error) {
 	var status = http.StatusBadRequest
-	var message = err.Error()
+	var finalErr = err
 
-	if errors.Is(err, service_errors.ErrNotFound) {
+	if errors.Is(err, service_errors.ErrInvalidCredentials) {
+		status = http.StatusBadRequest
+		finalErr = ErrBadRequest
+	} else if errors.Is(err, service_errors.ErrNotFound) {
 		status = http.StatusNotFound
-		message = ErrNotFound.Error()
+		finalErr = ErrNotFound
 	} else if errors.Is(err, service_errors.ErrPermissionDenied) {
 		status = http.StatusForbidden
-		message = ErrForbidden.Error()
+		finalErr = ErrForbidden
 	} else if errors.Is(err, service_errors.ErrServiceNotAvailable) {
 		status = http.StatusInternalServerError
-		message = ErrServerUnavailable.Error()
+		finalErr = ErrServerUnavailable
 	} else if errors.Is(err, service_errors.ErrAlreadyExists) {
 		status = http.StatusConflict
-		message = ErrAlreadyExist.Error()
+		finalErr = ErrAlreadyExist
 	}
-	return status, message
+	return status, finalErr
 }

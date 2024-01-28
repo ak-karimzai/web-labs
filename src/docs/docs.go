@@ -15,6 +15,98 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/auth/login": {
+            "post": {
+                "description": "Api for access to user privilege levels",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Sign in",
+                "parameters": [
+                    {
+                        "description": "login",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.LoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/signup": {
+            "post": {
+                "description": "Create an account in system",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Signup",
+                "parameters": [
+                    {
+                        "description": "sign up",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.SignUp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/goals": {
             "get": {
                 "security": [
@@ -123,11 +215,17 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/goals/:id": {
+        "/goals/{id}": {
             "get": {
                 "security": [
                     {
@@ -145,6 +243,15 @@ const docTemplate = `{
                     "Goal"
                 ],
                 "summary": "Get user goal",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Goal id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -198,6 +305,15 @@ const docTemplate = `{
                     "Goal"
                 ],
                 "summary": "Delete user goal",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Goal id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -250,6 +366,13 @@ const docTemplate = `{
                 "summary": "Update user goal",
                 "parameters": [
                     {
+                        "type": "integer",
+                        "description": "Goal id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
                         "description": "Update goal",
                         "name": "input",
                         "in": "body",
@@ -289,11 +412,17 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/goals/:id/tasks": {
+        "/goals/{id}/tasks": {
             "get": {
                 "security": [
                     {
@@ -314,7 +443,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Goal ID",
+                        "description": "Goal id",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -359,12 +488,6 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "schema": {
-                            "$ref": "#/definitions/handler_errors.ErrorResponse"
-                        }
                     }
                 }
             },
@@ -388,7 +511,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Goal ID",
+                        "description": "Goal id",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -427,11 +550,17 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
                     }
                 }
             }
         },
-        "/tasks/:id": {
+        "/goals/{id}/tasks/{task_id}": {
             "get": {
                 "security": [
                     {
@@ -518,8 +647,15 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Task ID",
+                        "description": "Goal ID",
                         "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Task ID",
+                        "name": "task_id",
                         "in": "path",
                         "required": true
                     },
@@ -529,7 +665,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.UpdateGoal"
+                            "$ref": "#/definitions/dto.UpdateTask"
                         }
                     }
                 ],
@@ -563,6 +699,12 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/handler_errors.ErrorResponse"
                         }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/handler_errors.ErrorResponse"
+                        }
                     }
                 }
             },
@@ -586,8 +728,15 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Task ID",
+                        "description": "Goal ID",
                         "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Task ID",
+                        "name": "task_id",
                         "in": "path",
                         "required": true
                     }
@@ -625,98 +774,6 @@ const docTemplate = `{
                     }
                 }
             }
-        },
-        "/user/login": {
-            "post": {
-                "description": "Api for access to user privilege levels",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "Sign in",
-                "parameters": [
-                    {
-                        "description": "login",
-                        "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/dto.Login"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/dto.LoginResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/handler_errors.ErrorResponse"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/handler_errors.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/user/signup": {
-            "post": {
-                "description": "Create an account in system",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "Signup",
-                "parameters": [
-                    {
-                        "description": "sign up",
-                        "name": "input",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/dto.SignUp"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/handler_errors.ErrorResponse"
-                        }
-                    },
-                    "409": {
-                        "description": "Conflict",
-                        "schema": {
-                            "$ref": "#/definitions/handler_errors.ErrorResponse"
-                        }
-                    }
-                }
-            }
         }
     },
     "definitions": {
@@ -739,21 +796,30 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "description",
+                "name",
                 "start_date",
                 "target_date"
             ],
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 0,
+                    "example": "Workout everyday for healthy life"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Sport"
                 },
                 "start_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "01-01-2023"
                 },
                 "target_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "01-01-2024"
                 }
             }
         },
@@ -762,17 +828,29 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "description",
-                "frequency"
+                "frequency",
+                "name"
             ],
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 0,
+                    "example": "Running everyday early morning"
                 },
                 "frequency": {
-                    "$ref": "#/definitions/dto.Frequency"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/dto.Frequency"
+                        }
+                    ],
+                    "example": "Daily"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Run"
                 }
             }
         },
@@ -837,19 +915,58 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "completion_status": {
-                    "$ref": "#/definitions/dto.CompletionStatus"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/dto.CompletionStatus"
+                        }
+                    ],
+                    "example": "Skipped"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Workout everyday for healthy life"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Sport"
                 },
                 "start_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "01-01-2023"
                 },
                 "target_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "01-01-2024"
+                }
+            }
+        },
+        "dto.UpdateTask": {
+            "description": "Update task request credentials",
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 0,
+                    "example": "Running everyday early morning"
+                },
+                "frequency": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/dto.Frequency"
+                        }
+                    ],
+                    "example": "Daily"
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Run"
                 }
             }
         },
@@ -858,16 +975,20 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "create_at": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-04-01T15:04:05Z"
                 },
                 "first_name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "User first name"
                 },
                 "last_name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "User last name"
                 },
                 "username": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "User's username'"
                 }
             }
         },
@@ -884,28 +1005,40 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "completion_status": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Progress"
                 },
                 "created_at": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-04-01T15:04:05Z"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Workout everyday for healthy life"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Sport"
                 },
                 "start_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-01-01T15:04:05Z"
                 },
                 "target_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2024-01-01T15:04:05Z"
                 },
                 "updated_at": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-04-01T15:04:05Z"
                 }
             }
         },
@@ -913,22 +1046,32 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "created_at": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-04-01T15:04:05Z"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 0,
+                    "example": "Running everyday early morning"
                 },
                 "frequency": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Daily"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 1
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "maxLength": 64,
+                    "minLength": 3,
+                    "example": "Run"
                 },
                 "updated_at": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2023-04-01T15:04:05Z"
                 }
             }
         }
@@ -945,7 +1088,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "0.1",
-	Host:             "localhost:3000",
+	Host:             "localhost",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
 	Title:            "Goal tracker",

@@ -1,2 +1,2 @@
-GET http://localhost:3000/api/v1/goals/2/tasks/1
+GET http://localhost:3000/api/v1/goals/2/tasks/?page_id=1&page_size=5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJraGFsaWQiLCJpc3N1ZWRfYXQiOiIyMDI0LTAxLTIyVDE0OjU5OjE4LjgyMTE5MTU3MiswMzowMCIsImV4cGlyZWRfYXQiOiIyMDI0LTAxLTIzVDE0OjU5OjE4LjgyMTE5MTY4NyswMzowMCJ9.lzeqLbuehOIERbLiBgebZUkBHBrlRqGPqlLiINk8MzA

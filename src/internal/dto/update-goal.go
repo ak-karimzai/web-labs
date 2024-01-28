@@ -3,7 +3,6 @@ package dto
 import (
 	"errors"
 	"fmt"
-	"time"
 )
 
 var (
@@ -13,11 +12,11 @@ var (
 // UpdateGoal
 // @Description Update goal request credentials
 type UpdateGoal struct {
-	Name             *string           `json:"name"`
-	Description      *string           `json:"description"`
-	CompletionStatus *CompletionStatus `json:"completion_status"`
-	StartDate        *time.Time        `json:"start_date"`
-	TargetDate       *time.Time        `json:"target_date"`
+	Name             *string           `json:"name" minLength:"3" maxLength:"64" example:"Sport"`
+	Description      *string           `json:"description" minLength:"3" maxLength:"64" example:"Workout everyday for healthy life"`
+	CompletionStatus *CompletionStatus `json:"completion_status" example:"Skipped"`
+	StartDate        *DDMMYYYY         `json:"start_date" example:"01-01-2023"`
+	TargetDate       *DDMMYYYY         `json:"target_date" example:"01-01-2024"`
 }
 
 func (goal UpdateGoal) Validate() error {
@@ -49,10 +48,18 @@ func (goal UpdateGoal) Validate() error {
 	}
 
 	if goal.StartDate != nil {
+		if !goal.StartDate.Validate() {
+			return fmt.Errorf(
+				"incorrect start date: %s", *goal.StartDate)
+		}
 		changes++
 	}
 
 	if goal.TargetDate != nil {
+		if !goal.TargetDate.Validate() {
+			return fmt.Errorf(
+				"incorrect target date: %s", *goal.TargetDate)
+		}
 		changes++
 	}
 

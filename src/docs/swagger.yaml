@@ -1,6 +1,6 @@
 basePath: /api/v1
 definitions:
-  ddo.CompletionStatus:
+  dto.CompletionStatus:
     description: A pre-defined choices for goal status
     enum:
     - Progress
@@ -11,36 +11,54 @@ definitions:
     - Progress
     - Completed
     - Skipped
-  ddo.CreateGoal:
+  dto.CreateGoal:
     description: Create request requirments
     properties:
       description:
+        example: Workout everyday for healthy life
+        maxLength: 256
+        minLength: 0
         type: string
       name:
+        example: Sport
+        maxLength: 64
+        minLength: 3
         type: string
       start_date:
+        example: 01-01-2023
         type: string
       target_date:
+        example: 01-01-2024
         type: string
     required:
     - description
+    - name
     - start_date
     - target_date
     type: object
-  ddo.CreateTask:
+  dto.CreateTask:
     description: Task request requirments
     properties:
       description:
+        example: Running everyday early morning
+        maxLength: 256
+        minLength: 0
         type: string
       frequency:
-        $ref: '#/definitions/ddo.Frequency'
+        allOf:
+        - $ref: '#/definitions/dto.Frequency'
+        example: Daily
       name:
+        example: Run
+        maxLength: 64
+        minLength: 3
         type: string
     required:
     - description
     - frequency
+    - name
     type: object
-  ddo.Frequency:
+  dto.Frequency:
     description: A pre-defined choices for task frequency
     enum:
     - Daily
@@ -51,7 +69,7 @@ definitions:
     - Daily
     - Weekly
     - Monthly
-  ddo.Login:
+  dto.Login:
     description: Login request credentials
     properties:
       password:
@@ -59,15 +77,15 @@ definitions:
       username:
         type: string
     type: object
-  ddo.LoginResponse:
+  dto.LoginResponse:
     description: Login request response
     properties:
       token:
         type: string
       user_info:
-        $ref: '#/definitions/ddo.UserInfo'
+        $ref: '#/definitions/dto.UserInfo'
     type: object
-  ddo.SignUp:
+  dto.SignUp:
     description: SignUp request credentials
     properties:
       first_name:
@@ -79,30 +97,62 @@ definitions:
       username:
         type: string
     type: object
-  ddo.UpdateGoal:
+  dto.UpdateGoal:
     description: Update goal request credentials
     properties:
       completion_status:
-        $ref: '#/definitions/ddo.CompletionStatus'
+        allOf:
+        - $ref: '#/definitions/dto.CompletionStatus'
+        example: Skipped
       description:
+        example: Workout everyday for healthy life
+        maxLength: 64
+        minLength: 3
         type: string
       name:
+        example: Sport
+        maxLength: 64
+        minLength: 3
         type: string
       start_date:
+        example: 01-01-2023
         type: string
       target_date:
+        example: 01-01-2024
         type: string
     type: object
-  ddo.UserInfo:
+  dto.UpdateTask:
+    description: Update task request credentials
+    properties:
+      description:
+        example: Running everyday early morning
+        maxLength: 256
+        minLength: 0
+        type: string
+      frequency:
+        allOf:
+        - $ref: '#/definitions/dto.Frequency'
+        example: Daily
+      name:
+        example: Run
+        maxLength: 64
+        minLength: 3
+        type: string
+    type: object
+  dto.UserInfo:
     description: User info
     properties:
       create_at:
+        example: "2023-04-01T15:04:05Z"
         type: string
       first_name:
+        example: User first name
         type: string
       last_name:
+        example: User last name
         type: string
       username:
+        example: User's username'
         type: string
     type: object
   handler_errors.ErrorResponse:
@@ -114,44 +164,126 @@ definitions:
   model.Goal:
     properties:
       completion_status:
+        example: Progress
         type: string
       created_at:
+        example: "2023-04-01T15:04:05Z"
         type: string
       description:
+        example: Workout everyday for healthy life
+        maxLength: 64
+        minLength: 3
         type: string
       id:
+        example: 1
         type: integer
       name:
+        example: Sport
+        maxLength: 64
+        minLength: 3
         type: string
       start_date:
+        example: "2023-01-01T15:04:05Z"
         type: string
       target_date:
+        example: "2024-01-01T15:04:05Z"
         type: string
       updated_at:
+        example: "2023-04-01T15:04:05Z"
         type: string
     type: object
   model.Task:
     properties:
       created_at:
+        example: "2023-04-01T15:04:05Z"
         type: string
       description:
+        example: Running everyday early morning
+        maxLength: 256
+        minLength: 0
         type: string
       frequency:
+        example: Daily
         type: string
       id:
+        example: 1
         type: integer
       name:
+        example: Run
+        maxLength: 64
+        minLength: 3
         type: string
       updated_at:
+        example: "2023-04-01T15:04:05Z"
         type: string
     type: object
-host: localhost:3000
+host: localhost
 info:
   contact: {}
   description: API Server for Goal tracker app
   title: Goal tracker
   version: "0.1"
 paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Api for access to user privilege levels
+      parameters:
+      - description: login
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.Login'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
+      summary: Sign in
+      tags:
+      - Auth
+  /auth/signup:
+    post:
+      consumes:
+      - application/json
+      description: Create an account in system
+      parameters:
+      - description: sign up
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SignUp'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
+      summary: Signup
+      tags:
+      - Auth
   /goals:
     get:
       consumes:
@@ -204,7 +336,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.CreateGoal'
+          $ref: '#/definitions/dto.CreateGoal'
       produces:
       - application/json
       responses:
@@ -220,16 +352,26 @@ paths:
           description: Unauthorized
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
       security:
       - ApiKeyAuth: []
       summary: Create goal by system user
       tags:
       - Goal
-  /goals/:id:
+  /goals/{id}:
     delete:
       consumes:
       - application/json
       description: delete user goal by id
+      parameters:
+      - description: Goal id
+        in: path
+        name: id
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
@@ -262,6 +404,12 @@ paths:
       consumes:
       - application/json
       description: Get user goal by id
+      parameters:
+      - description: Goal id
+        in: path
+        name: id
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
@@ -297,12 +445,17 @@ paths:
       - application/json
       description: update user goal by id
       parameters:
+      - description: Goal id
+        in: path
+        name: id
+        required: true
+        type: integer
       - description: Update goal
         in: body
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.UpdateGoal'
+          $ref: '#/definitions/dto.UpdateGoal'
       produces:
       - application/json
       responses:
@@ -326,18 +479,22 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
       security:
       - ApiKeyAuth: []
       summary: Update user goal
       tags:
       - Goal
-  /goals/:id/tasks:
+  /goals/{id}/tasks:
     get:
       consumes:
       - application/json
       description: Get a list of user goal tasks
       parameters:
-      - description: Goal ID
+      - description: Goal id
         in: path
         name: id
         required: true
@@ -373,10 +530,6 @@ paths:
           description: Unauthorized
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
-        "403":
-          description: Forbidden
-          schema:
-            $ref: '#/definitions/handler_errors.ErrorResponse'
       security:
       - ApiKeyAuth: []
       summary: Get user goal tasks
@@ -387,7 +540,7 @@ paths:
       - application/json
       description: Create task request
       parameters:
-      - description: Goal ID
+      - description: Goal id
         in: path
         name: id
         required: true
@@ -397,7 +550,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.CreateTask'
+          $ref: '#/definitions/dto.CreateTask'
       produces:
       - application/json
       responses:
@@ -417,20 +570,29 @@ paths:
           description: Forbidden
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
       security:
       - ApiKeyAuth: []
       summary: Create task for a goal by system user
       tags:
       - Task
-  /tasks/:id:
+  /goals/{id}/tasks/{task_id}:
     delete:
       consumes:
       - application/json
       description: delete user goal by id
       parameters:
-      - description: Task ID
+      - description: Goal ID
         in: path
         name: id
+        required: true
+        type: integer
+      - description: Task ID
+        in: path
+        name: task_id
         required: true
         type: integer
       produces:
@@ -509,9 +671,14 @@ paths:
       - application/json
       description: update user goal task by id
       parameters:
-      - description: Task ID
+      - description: Goal ID
         in: path
         name: id
+        required: true
+        type: integer
+      - description: Task ID
+        in: path
+        name: task_id
         required: true
         type: integer
       - description: Create goal
@@ -519,7 +686,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/ddo.UpdateGoal'
+          $ref: '#/definitions/dto.UpdateTask'
       produces:
       - application/json
       responses:
@@ -543,71 +710,15 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/handler_errors.ErrorResponse'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/handler_errors.ErrorResponse'
       security:
       - ApiKeyAuth: []
       summary: Update user goal task
       tags:
       - Task
-  /user/login:
-    post:
-      consumes:
-      - application/json
-      description: Api for access to user privilege levels
-      parameters:
-      - description: login
-        in: body
-        name: input
-        required: true
-        schema:
-          $ref: '#/definitions/ddo.Login'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/ddo.LoginResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/handler_errors.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/handler_errors.ErrorResponse'
-      summary: Sign in
-      tags:
-      - Auth
-  /user/signup:
-    post:
-      consumes:
-      - application/json
-      description: Create an account in system
-      parameters:
-      - description: sign up
-        in: body
-        name: input
-        required: true
-        schema:
-          $ref: '#/definitions/ddo.SignUp'
-      produces:
-      - application/json
-      responses:
-        "201":
-          description: Created
-          schema:
-            type: integer
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/handler_errors.ErrorResponse'
-        "409":
-          description: Conflict
-          schema:
-            $ref: '#/definitions/handler_errors.ErrorResponse'
-      summary: Signup
-      tags:
-      - Auth
 securityDefinitions:
   ApiKeyAuth:
     in: header

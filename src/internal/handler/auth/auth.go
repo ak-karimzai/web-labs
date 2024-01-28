@@ -30,7 +30,7 @@ func NewHandler(service *service.Service, logger logger.Logger) *Handler {
 // @Success 201 {integer} integer 1
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 409 {object} handler_errors.ErrorResponse
-// @Router /user/signup [post]
+// @Router /auth/signup [post]
 func (a *Handler) SignUp(ctx *gin.Context) {
 	var request dto.SignUp
 	if err := ctx.BindJSON(&request); err != nil {
@@ -63,7 +63,7 @@ func (a *Handler) SignUp(ctx *gin.Context) {
 // @Success 200 {object} dto.LoginResponse
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 404 {object} handler_errors.ErrorResponse
-// @Router /user/login [post]
+// @Router /auth/login [post]
 func (a *Handler) Login(ctx *gin.Context) {
 	var request dto.Login
 	if err := ctx.BindJSON(&request); err != nil {
@@ -83,6 +83,9 @@ func (a *Handler) Login(ctx *gin.Context) {
 		if errors.Is(err, service_errors.ErrNotFound) {
 			status = http.StatusNotFound
 			message = handler_errors.ErrNotFound.Error()
+		} else if errors.Is(err, service_errors.ErrInvalidCredentials) {
+			status = http.StatusBadRequest
+			message = "incorrect credentials!"
 		}
 		handler_errors.NewErrorResponse(ctx, status, message)
 		return

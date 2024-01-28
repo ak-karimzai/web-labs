@@ -5,9 +5,9 @@ import "fmt"
 // CreateTask task create request
 // @Description Task request requirments
 type CreateTask struct {
-	Name        string    `json:"name" 		  binding:"required"`
-	Description string    `json:"description" binding:"required"`
-	Frequency   Frequency `json:"frequency"   binding:"required"`
+	Name        string    `json:"name" binding:"required" minLength:"3" maxLength:"64" example:"Run"`
+	Description string    `json:"description" binding:"required" minLength:"0" maxLength:"256" example:"Running everyday early morning"`
+	Frequency   Frequency `json:"frequency"   binding:"required" example:"Daily"`
 }
 
 func (ct CreateTask) Validate() error {

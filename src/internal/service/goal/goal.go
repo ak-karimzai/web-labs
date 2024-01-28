@@ -98,6 +98,9 @@ func (s Service) UpdateByID(ctx context.Context, userId, goalId int, update dto.
 	err = s.repo.Goal.UpdateByID(ctx, goalId, update)
 	if err != nil {
 		s.logger.Error(err)
+		if errors.Is(err, db.ErrConflict) {
+			return service_errors.ErrAlreadyExists
+		}
 		return service_errors.ErrServiceNotAvailable
 	}
 	return nil

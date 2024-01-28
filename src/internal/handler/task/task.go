@@ -1,13 +1,11 @@
 package task
 
 import (
-	"errors"
 	"fmt"
 	"github.com/ak-karimzai/web-labs/internal/dto"
 	handler_errors "github.com/ak-karimzai/web-labs/internal/handler/handler-errors"
 	"github.com/ak-karimzai/web-labs/internal/handler/middleware"
 	"github.com/ak-karimzai/web-labs/internal/service"
-	service_errors "github.com/ak-karimzai/web-labs/internal/service/service-errors"
 	"github.com/ak-karimzai/web-labs/pkg/logger"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -30,13 +28,14 @@ func NewHandler(service *service.Service, logger logger.Logger) *Handler {
 // @Tags         Task
 // @Accept 	  json
 // @Produce 	  json
-// @Param 	id path int true "Goal ID"
+// @Param  id path int true "Goal id"
 // @Param 	input body dto.CreateTask true "Create task request"
 // @Success 201 {object} model.Task
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 401 {object} handler_errors.ErrorResponse
 // @Failure 403 {object} handler_errors.ErrorResponse
-// @Router /goals/:id/tasks [post]
+// @Failure 409 {object} handler_errors.ErrorResponse
+// @Router /goals/{id}/tasks [post]
 func (h Handler) Create(ctx *gin.Context) {
 	var request dto.CreateTask
 
@@ -59,13 +58,14 @@ func (h Handler) Create(ctx *gin.Context) {
 		return
 	}
 
-	goalId, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		h.logger.Error(err)
+	goalId, _ := strconv.Atoi(ctx.Param("id"))
+	if goalId <= 0 {
+		message := fmt.Sprintf("incorrect goal_id: %d", goalId)
+		h.logger.Error(message)
 		handler_errors.NewErrorResponse(
 			ctx,
 			http.StatusBadRequest,
-			fmt.Sprintf("incorrect id: %d", goalId))
+			message)
 		return
 	}
 
@@ -76,17 +76,11 @@ func (h Handler) Create(ctx *gin.Context) {
 		request)
 	if err != nil {
 		h.logger.Error(err)
-		status := http.StatusInternalServerError
-		finalErr := handler_errors.ErrServerUnavailable
-		if errors.Is(err, service_errors.ErrAlreadyExists) {
-			status = http.StatusConflict
-			finalErr = handler_errors.ErrAlreadyExist
-		}
+		status, err := handler_errors.ParseServiceErrors(err)
 		handler_errors.NewErrorResponse(
 			ctx,
 			status,
-			finalErr.Error(),
-		)
+			err.Error())
 		return
 	}
 	ctx.JSON(http.StatusCreated, task)
@@ -99,14 +93,13 @@ func (h Handler) Create(ctx *gin.Context) {
 // @Tags         Task
 // @Accept 	  json
 // @Produce 	  json
-// @Param 	id path int true "Goal ID"
+// @Param  	id 		path   int true "Goal id"
 // @Param   page_id query  int   true  "number of the page"  minimum(1)  default(1)
 // @Param   page_size query  int   true  "size of the page" minimum(5) minimum(20) default(5)
 // @Success 200 {array} model.Task
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 401 {object} handler_errors.ErrorResponse
-// @Failure 403 {object} handler_errors.ErrorResponse
-// @Router /goals/:id/tasks [get]
+// @Router /goals/{id}/tasks [get]
 func (h Handler) Get(ctx *gin.Context) {
 	var listParams dto.ListParams
 
@@ -129,29 +122,25 @@ func (h Handler) Get(ctx *gin.Context) {
 		return
 	}
 
-	goalId, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		h.logger.Error(err)
+	goalId, _ := strconv.Atoi(ctx.Param("id"))
+	if goalId <= 0 {
+		message := fmt.Sprintf("incorrect goal_id: %d", goalId)
+		h.logger.Error(message)
 		handler_errors.NewErrorResponse(
 			ctx,
 			http.StatusBadRequest,
-			fmt.Sprintf("incorrect id: %d", goalId))
+			message)
 		return
 	}
 
 	tasks, err := h.service.Task.Get(ctx, payload.UserID, goalId, listParams)
 	if err != nil {
 		h.logger.Error(err)
-		var status = http.StatusInternalServerError
-		var message = handler_errors.ErrServerUnavailable.Error()
-		if errors.Is(err, service_errors.ErrNotFound) {
-			status = http.StatusNotFound
-			message = handler_errors.ErrNotFound.Error()
-		}
+		status, err := handler_errors.ParseServiceErrors(err)
 		handler_errors.NewErrorResponse(
 			ctx,
 			status,
-			message)
+			err.Error())
 		return
 	}
 	ctx.JSON(http.StatusOK, tasks)
@@ -162,7 +151,7 @@ func (h Handler) Get(ctx *gin.Context) {
 // @Summary      Get user goal task by id
 // @Description  Get user goal task by id
 // @Tags         Task
-// @Accept 	  json
+// @Accept 	  	  json
 // @Produce 	  json
 // @Param 	id path int true "Goal ID"
 // @Param 	task_id path int true "Task ID"
@@ -171,7 +160,7 @@ func (h Handler) Get(ctx *gin.Context) {
 // @Failure 401 {object} handler_errors.ErrorResponse
 // @Failure 403 {object} handler_errors.ErrorResponse
 // @Failure 404 {object} handler_errors.ErrorResponse
-// @Router /tasks/:id [get]
+// @Router /goals/{id}/tasks/{task_id} [get]
 func (h Handler) GetByID(ctx *gin.Context) {
 	payload, err := middleware.GetUserInfo(ctx)
 	if err != nil {
@@ -183,32 +172,35 @@ func (h Handler) GetByID(ctx *gin.Context) {
 		return
 	}
 
-	taskId, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		h.logger.Error(err)
+	goalId, _ := strconv.Atoi(ctx.Param("id"))
+	if goalId <= 0 {
+		message := fmt.Sprintf("incorrect goal_id: %d", goalId)
+		h.logger.Error(message)
 		handler_errors.NewErrorResponse(
 			ctx,
 			http.StatusBadRequest,
-			fmt.Sprintf("incorrect id: %d", taskId))
+			message)
 		return
 	}
 
-	task, err := h.service.Task.GetByID(ctx, payload.UserID, taskId)
+	taskId, _ := strconv.Atoi(ctx.Param("task_id"))
+	if taskId <= 0 {
+		message := fmt.Sprintf("incorrect task_id: %d", taskId)
+		h.logger.Error(message)
+		handler_errors.NewErrorResponse(
+			ctx,
+			http.StatusBadRequest,
+			message)
+		return
+	}
+	task, err := h.service.Task.GetByID(ctx, payload.UserID, goalId, taskId)
 	if err != nil {
 		h.logger.Error(err)
-		var status = http.StatusInternalServerError
-		var message = handler_errors.ErrServerUnavailable.Error()
-		if errors.Is(err, service_errors.ErrPermissionDenied) {
-			status = http.StatusForbidden
-			message = handler_errors.ErrPermissionDenied.Error()
-		} else if errors.Is(err, service_errors.ErrNotFound) {
-			status = http.StatusNotFound
-			message = handler_errors.ErrNotFound.Error()
-		}
+		status, err := handler_errors.ParseServiceErrors(err)
 		handler_errors.NewErrorResponse(
 			ctx,
 			status,
-			message)
+			err.Error())
 		return
 	}
 	ctx.JSON(http.StatusOK, task)
@@ -221,14 +213,16 @@ func (h Handler) GetByID(ctx *gin.Context) {
 // @Tags         Task
 // @Accept 	  json
 // @Produce 	  json
-// @Param 	id path int true "Task ID"
-// @Param input body dto.UpdateGoal true "Create goal"
+// @Param 	id path int true "Goal ID"
+// @Param 	task_id path int true "Task ID"
+// @Param input body dto.UpdateTask true "Create goal"
 // @Success 204 {integer}  1
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 401 {object} handler_errors.ErrorResponse
 // @Failure 403 {object} handler_errors.ErrorResponse
 // @Failure 404 {object} handler_errors.ErrorResponse
-// @Router /tasks/:id [put]
+// @Failure 409 {object} handler_errors.ErrorResponse
+// @Router /goals/{id}/tasks/{task_id} [put]
 func (h Handler) UpdateByID(ctx *gin.Context) {
 	var request dto.UpdateTask
 
@@ -242,13 +236,25 @@ func (h Handler) UpdateByID(ctx *gin.Context) {
 		return
 	}
 
-	taskId, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		h.logger.Error(err)
+	goalId, _ := strconv.Atoi(ctx.Param("id"))
+	if goalId <= 0 {
+		message := fmt.Sprintf("incorrect goal_id: %d", goalId)
+		h.logger.Error(message)
 		handler_errors.NewErrorResponse(
 			ctx,
 			http.StatusBadRequest,
-			fmt.Sprintf("incorrect task_id: %d", taskId))
+			message)
+		return
+	}
+
+	taskId, _ := strconv.Atoi(ctx.Param("task_id"))
+	if taskId <= 0 {
+		message := fmt.Sprintf("incorrect task_id: %d", taskId)
+		h.logger.Error(message)
+		handler_errors.NewErrorResponse(
+			ctx,
+			http.StatusBadRequest,
+			message)
 		return
 	}
 	if err := ctx.ShouldBind(&request); err != nil {
@@ -260,22 +266,17 @@ func (h Handler) UpdateByID(ctx *gin.Context) {
 		return
 	}
 
-	err = h.service.Task.UpdateByID(ctx, payload.UserID, taskId, request)
+	err = h.service.Task.UpdateByID(ctx, payload.UserID, goalId, taskId, request)
 	if err != nil {
 		h.logger.Error(err)
-		var status = http.StatusInternalServerError
-		var message = handler_errors.ErrServerUnavailable.Error()
-		if errors.Is(err, service_errors.ErrPermissionDenied) {
-			status = http.StatusForbidden
-			message = handler_errors.ErrPermissionDenied.Error()
-		}
+		status, err := handler_errors.ParseServiceErrors(err)
 		handler_errors.NewErrorResponse(
 			ctx,
 			status,
-			message)
+			err.Error())
 		return
 	}
-	ctx.Status(http.StatusOK)
+	ctx.Status(http.StatusNoContent)
 }
 
 // DeleteByID godoc
@@ -285,13 +286,14 @@ func (h Handler) UpdateByID(ctx *gin.Context) {
 // @Tags         Task
 // @Accept 	  json
 // @Produce 	  json
-// @Param 	id path int true "Task ID"
+// @Param 	id path int true "Goal ID"
+// @Param 	task_id path int true "Task ID"
 // @Success 200 {integer}  1
 // @Failure 400 {object} handler_errors.ErrorResponse
 // @Failure 401 {object} handler_errors.ErrorResponse
 // @Failure 403 {object} handler_errors.ErrorResponse
 // @Failure 404 {object} handler_errors.ErrorResponse
-// @Router /tasks/:id [delete]
+// @Router /goals/{id}/tasks/{task_id} [delete]
 func (h Handler) DeleteByID(ctx *gin.Context) {
 	payload, err := middleware.GetUserInfo(ctx)
 	if err != nil {
@@ -303,31 +305,35 @@ func (h Handler) DeleteByID(ctx *gin.Context) {
 		return
 	}
 
-	taskId, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		h.logger.Error(err)
+	goalId, _ := strconv.Atoi(ctx.Param("id"))
+	if goalId <= 0 {
+		message := fmt.Sprintf("incorrect goal_id: %d", goalId)
+		h.logger.Error(message)
 		handler_errors.NewErrorResponse(
 			ctx,
 			http.StatusBadRequest,
-			fmt.Sprintf("incorrect task_id: %d", taskId))
+			message)
 		return
 	}
 
-	if err := h.service.Task.DeleteByID(ctx, payload.UserID, taskId); err != nil {
+	taskId, _ := strconv.Atoi(ctx.Param("task_id"))
+	if taskId <= 0 {
+		message := fmt.Sprintf("incorrect task_id: %d", taskId)
+		h.logger.Error(message)
+		handler_errors.NewErrorResponse(
+			ctx,
+			http.StatusBadRequest,
+			message)
+		return
+	}
+
+	if err := h.service.Task.DeleteByID(ctx, payload.UserID, goalId, taskId); err != nil {
 		h.logger.Error(err)
-		var status = http.StatusInternalServerError
-		var message = handler_errors.ErrServerUnavailable.Error()
-		if errors.Is(err, service_errors.ErrPermissionDenied) {
-			status = http.StatusForbidden
-			message = handler_errors.ErrPermissionDenied.Error()
-		} else if errors.Is(err, service_errors.ErrNotFound) {
-			status = http.StatusNotFound
-			message = handler_errors.ErrNotFound.Error()
-		}
+		status, err := handler_errors.ParseServiceErrors(err)
 		handler_errors.NewErrorResponse(
 			ctx,
 			status,
-			message)
+			err.Error())
 		return
 	}
 	ctx.Status(http.StatusOK)

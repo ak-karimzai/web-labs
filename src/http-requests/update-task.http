@@ -1,6 +1,6 @@
-PUT http://localhost:3000/api/v1/tasks/1
+PUT http://localhost:3000/api/v1/goals/2/tasks/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJraGFsaWQiLCJpc3N1ZWRfYXQiOiIyMDI0LTAxLTE2VDAxOjA2OjUxLjUxNTc4Mjc5NiswMzowMCIsImV4cGlyZWRfYXQiOiIyMDI0LTAxLTE3VDAxOjA2OjUxLjUxNTc4Mjg5NSswMzowMCJ9.T30EZLsG1db1dOxMeaivnQaH3Fi6EtzW2B01CuSXr8Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJraGFsaWQiLCJpc3N1ZWRfYXQiOiIyMDI0LTAxLTIyVDE0OjU5OjE4LjgyMTE5MTU3MiswMzowMCIsImV4cGlyZWRfYXQiOiIyMDI0LTAxLTIzVDE0OjU5OjE4LjgyMTE5MTY4NyswMzowMCJ9.lzeqLbuehOIERbLiBgebZUkBHBrlRqGPqlLiINk8MzA
 
 {
   "name": "Wake up early every morning",

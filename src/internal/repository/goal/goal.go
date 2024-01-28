@@ -29,8 +29,8 @@ func (g Repository) Create(ctx context.Context, userId int, goal dto.CreateGoal)
 		query,
 		goal.Name,
 		goal.Description,
-		goal.StartDate,
-		goal.TargetDate,
+		goal.StartDate.ToStdDate(),
+		goal.TargetDate.ToStdDate(),
 		userId,
 	).Scan(&id)
 	if err != nil {
@@ -146,9 +146,9 @@ func (g Repository) UpdateByID(ctx context.Context, goalId int, update dto.Updat
 	}
 
 	updatedFields := strings.Join(setValues, ", ")
+	updatedFields = fmt.Sprintf("%s WHERE id = %d", updatedFields, goalId)
 
-	query := fmt.Sprintf("UPDATE goals SET %s", updatedFields)
-
+	query := fmt.Sprintf("UPDATE goals SET %s ", updatedFields)
 	g.logger.Printf("query: %s, args: %s", query, args)
 	_, err := g.db.Exec(ctx, query, args...)
 	if err != nil {

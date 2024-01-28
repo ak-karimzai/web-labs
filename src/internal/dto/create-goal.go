@@ -2,7 +2,6 @@ package dto
 
 import (
 	"fmt"
-	"time"
 )
 
 const (
@@ -15,10 +14,10 @@ const (
 // CreateGoal goal create request
 // @Description Create request requirments
 type CreateGoal struct {
-	Name        string    `json:"name"	  	  binding:"required"`
-	Description string    `json:"description" binding:"required"`
-	StartDate   time.Time `json:"start_date"  binding:"required"`
-	TargetDate  time.Time `json:"target_date" binding:"required"`
+	Name        string   `json:"name"    binding:"required" minLength:"3" maxLength:"64" example:"Sport"`
+	Description string   `json:"description" binding:"required" minLength:"0" maxLength:"256" example:"Workout everyday for healthy life"`
+	StartDate   DDMMYYYY `json:"start_date"  binding:"required" example:"01-01-2023"`
+	TargetDate  DDMMYYYY `json:"target_date" binding:"required" example:"01-01-2024"`
 }
 
 func (cg CreateGoal) Validate() error {
@@ -32,6 +31,16 @@ func (cg CreateGoal) Validate() error {
 		length > MaxDescriptionLen {
 		return fmt.Errorf(
 			"incorrect username {%s} length %d", cg.Description, length)
+	}
+
+	if !cg.StartDate.Validate() {
+		return fmt.Errorf(
+			"incorrect start date: %s", cg.StartDate)
+	}
+
+	if !cg.TargetDate.Validate() {
+		return fmt.Errorf(
+			"incorrect target date: %s", cg.TargetDate)
 	}
 
 	return nil

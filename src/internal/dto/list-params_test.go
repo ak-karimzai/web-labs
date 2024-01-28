@@ -1,18 +1,18 @@
 package dto_test
 
 import (
-	"github.com/ak-karimzai/web-labs/pkg/ddo"
+	"github.com/ak-karimzai/web-labs/internal/dto"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
 
 func TestListParams_ValidateNoError(t *testing.T) {
-	var listParams ddo.ListParams = ddo.ListParams{
+	var listParams dto.ListParams = dto.ListParams{
 		PageID:   1,
 		PageSize: 5,
 	}
 
-	listParams = ddo.ListParams{
+	listParams = dto.ListParams{
 		PageID:   1000,
 		PageSize: 20,
 	}
@@ -20,7 +20,7 @@ func TestListParams_ValidateNoError(t *testing.T) {
 }
 
 func TestListParams_ValidatePageIdIncorrect(t *testing.T) {
-	var listParams ddo.ListParams = ddo.ListParams{
+	var listParams dto.ListParams = dto.ListParams{
 		PageID:   0,
 		PageSize: 5,
 	}
@@ -28,13 +28,13 @@ func TestListParams_ValidatePageIdIncorrect(t *testing.T) {
 }
 
 func TestListParams_ValidatePageSizeIncorrect(t *testing.T) {
-	var listParams ddo.ListParams = ddo.ListParams{
+	var listParams dto.ListParams = dto.ListParams{
 		PageID:   1,
 		PageSize: 4,
 	}
 	require.Error(t, listParams.Validate())
 
-	listParams = ddo.ListParams{
+	listParams = dto.ListParams{
 		PageID:   1,
 		PageSize: 21,
 	}

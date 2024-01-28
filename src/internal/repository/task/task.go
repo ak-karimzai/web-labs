@@ -42,9 +42,9 @@ func (t Repository) Create(ctx context.Context, goalId int, task dto.CreateTask)
 func (t Repository) Get(ctx context.Context, goalId int, listParams dto.ListParams) ([]model.Task, error) {
 	var tasks []model.Task
 	query := `
-		SELECT t.id, t.name, t.description, frequency, t.created_at, t.updated_at, goal_id
+		SELECT t.id, t.name, t.description, t.frequency, t.created_at, t.updated_at, t.goal_id
 		FROM tasks t
-		JOIN public.goals g on g.id = t.goal_id
+		JOIN goals g on g.id = t.goal_id
 		WHERE g.id = $1
 		LIMIT $2 OFFSET $3
 	`
@@ -130,7 +130,7 @@ func (t Repository) UpdateByID(ctx context.Context, taskId int, task dto.UpdateT
 	}
 
 	updatedFields := strings.Join(setValues, ", ")
-
+	updatedFields = fmt.Sprintf("%s WHERE id = %d", updatedFields, taskId)
 	query := fmt.Sprintf("UPDATE tasks SET %s", updatedFields)
 
 	t.logger.Printf("query: %s, args: %s", query, args)

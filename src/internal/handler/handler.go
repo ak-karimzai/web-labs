@@ -1,6 +1,7 @@
 package handler
 
 import (
+	_ "github.com/ak-karimzai/web-labs/docs"
 	"github.com/ak-karimzai/web-labs/internal/handler/auth"
 	"github.com/ak-karimzai/web-labs/internal/handler/goal"
 	"github.com/ak-karimzai/web-labs/internal/handler/middleware"
@@ -11,8 +12,6 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-
-	_ "github.com/ak-karimzai/web-labs/docs"
 )
 
 type Handler struct {
@@ -31,35 +30,28 @@ func NewHandler(services *service.Service, tokenMaker auth_token.Maker, logger l
 	}
 }
 
-func (handler *Handler) InitRoutes() *gin.Engine {
+func (handler *Handler) InitRoutes(basePath string) *gin.Engine {
 	router := gin.New()
+	router.Use(middleware.Cors())
 
-	api := router.Group("/api")
+	api := router.Group(basePath, middleware.Logger())
 	{
-		v1 := api.Group("/v1")
+		api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+		auth := api.Group("/auth")
 		{
-			v1.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-			auth := v1.Group("/auth")
-			{
-				auth.POST("/signup", handler.Auth.SignUp)
-				auth.POST("/login", handler.Auth.Login)
-			}
+			auth.POST("/signup", handler.Auth.SignUp)
+			auth.POST("/login", handler.Auth.Login)
+		}
 
-			goals := v1.Group("/goals", middleware.UserAuthentication(handler.Maker))
-			{
-				handler.setGoalRouter(goals)
-			}
-
-			tasks := v1.Group("/tasks", middleware.UserAuthentication(handler.Maker))
-			{
-				handler.setTaskRouter(tasks)
-			}
+		goals := api.Group("/goals", middleware.UserAuthentication(handler.Maker))
+		{
+			handler.setGoalAndTaskRoutes(goals)
 		}
 	}
 	return router
 }
 
-func (handler *Handler) setGoalRouter(goal *gin.RouterGroup) {
+func (handler *Handler) setGoalAndTaskRoutes(goal *gin.RouterGroup) {
 	goal.POST("/", handler.Goal.Create)
 	goal.GET("/", handler.Goal.Get)
 	goal.GET("/:id", handler.Goal.GetByID)
@@ -67,10 +59,7 @@ func (handler *Handler) setGoalRouter(goal *gin.RouterGroup) {
 	goal.DELETE("/:id", handler.Goal.DeleteByID)
 	goal.GET("/:id/tasks", handler.Task.Get)
 	goal.POST("/:id/tasks", handler.Task.Create)
-}
-
-func (handler *Handler) setTaskRouter(task *gin.RouterGroup) {
-	task.GET("/:id", handler.Task.GetByID)
-	task.PUT("/:id", handler.Task.UpdateByID)
-	task.DELETE("/:id", handler.Task.DeleteByID)
+	goal.GET("/:id/tasks/:task_id", handler.Task.GetByID)
+	goal.PUT("/:id/tasks/:task_id", handler.Task.UpdateByID)
+	goal.DELETE("/:id/tasks/:task_id", handler.Task.DeleteByID)
 }

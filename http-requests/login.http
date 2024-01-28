@@ -1,4 +1,4 @@
-POST https://localhost/api/v1/auth/login
+POST https://localhost/mirror/api/v1/auth/login
 Content-Type: application/json
 
 {

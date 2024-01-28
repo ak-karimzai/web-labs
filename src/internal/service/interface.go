@@ -17,9 +17,9 @@ type Goal interface {
 type Task interface {
 	Create(ctx context.Context, userId, goalId int, task dto.CreateTask) (model.Task, error)
 	Get(ctx context.Context, userId, goalId int, listParams dto.ListParams) ([]model.Task, error)
-	GetByID(ctx context.Context, userId, taskId int) (model.Task, error)
-	UpdateByID(ctx context.Context, userId, taskId int, task dto.UpdateTask) error
-	DeleteByID(ctx context.Context, userId, taskId int) error
+	GetByID(ctx context.Context, userId, goalId, taskId int) (model.Task, error)
+	UpdateByID(ctx context.Context, userId, goalId, taskId int, task dto.UpdateTask) error
+	DeleteByID(ctx context.Context, userId, goalId, taskId int) error
 }
 
 type Auth interface {

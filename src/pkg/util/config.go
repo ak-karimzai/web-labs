@@ -25,6 +25,7 @@ type Config struct {
 	LoggerFilePath      string        `mapstructure:"LOGGER_FILE_PATH"`
 	Environment         string        `mapstructure:"ENV"`
 	ReadOnly            bool          `mapstructure:"READ_ONLY"`
+	BasePath            string        `mapstructure:"BASE_PATH"`
 }
 
 func NewConfig() (Config, error) {

@@ -1,6 +1,10 @@
 package main
 
 import (
+	"fmt"
+	"github.com/ak-karimzai/web-labs/docs"
+	_ "github.com/ak-karimzai/web-labs/docs"
+
 	"github.com/ak-karimzai/web-labs/cmd/server"
 	"github.com/ak-karimzai/web-labs/internal/handler"
 	"github.com/ak-karimzai/web-labs/internal/repository"
@@ -17,6 +21,8 @@ import (
 	"time"
 )
 
+var config util.Config
+
 // @title Goal tracker
 // @version 0.1
 // @description API Server for Goal tracker app
@@ -28,11 +34,6 @@ import (
 // @in header
 // @name Authorization
 func main() {
-	config, err := util.NewConfig()
-	if err != nil {
-		log.Fatalf("error while loading configs: %s", err.Error())
-	}
-
 	lgr, err := logger.NewLogger(config.LoggerFilePath)
 	if err != nil {
 		log.Fatal(err)
@@ -74,7 +75,7 @@ func main() {
 	srv := new(server.Server)
 	go func() {
 		time.Sleep(time.Second)
-		if err := srv.Run(config.ServerPort, handlers.InitRoutes()); err != nil {
+		if err := srv.Run(config.ServerPort, handlers.InitRoutes(config.BasePath)); err != nil {
 			lgr.Fatalf("an error occured during start of server: %s", err)
 		}
 	}()
@@ -92,5 +93,21 @@ func main() {
 
 	if err := conn.Close(context.Background()); err != nil {
 		lgr.Errorf("an error occured on closing db connection: %s", err.Error())
+	}
+}
+
+func init() {
+	var err error
+	config, err = util.NewConfig()
+	if err != nil {
+		log.Fatalf("error while loading configs: %s", err.Error())
+	}
+
+	log.Print(config)
+	if config.ServerPort != "80" {
+		docs.SwaggerInfo.Host = fmt.Sprintf("localhost:%s", config.ServerPort)
+	}
+	if config.BasePath != "" {
+		docs.SwaggerInfo.BasePath = config.BasePath
 	}
 }

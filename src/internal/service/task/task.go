@@ -72,11 +72,11 @@ func (s Service) Get(ctx context.Context, userId, goalId int, listParams dto.Lis
 	}
 
 	if goal.UserID != userId {
-		s.logger.Print("permission denied")
+		s.logger.Print("Error (Get): permission denied -> Goal user id are not equal")
 		return []model.Task{}, service_errors.ErrPermissionDenied
 	}
 
-	tasks, err := s.repo.Task.Get(ctx, userId, listParams)
+	tasks, err := s.repo.Task.Get(ctx, goalId, listParams)
 	if err != nil {
 		s.logger.Error(err)
 		var finalErr = service_errors.ErrServiceNotAvailable
@@ -88,7 +88,7 @@ func (s Service) Get(ctx context.Context, userId, goalId int, listParams dto.Lis
 	return tasks, nil
 }
 
-func (s Service) GetByID(ctx context.Context, userId, taskId int) (model.Task, error) {
+func (s Service) GetByID(ctx context.Context, userId, goalId, taskId int) (model.Task, error) {
 	task, err := s.repo.Task.GetByID(ctx, taskId)
 	if err != nil {
 		s.logger.Error(err)
@@ -96,6 +96,11 @@ func (s Service) GetByID(ctx context.Context, userId, taskId int) (model.Task, e
 			return model.Task{}, service_errors.ErrNotFound
 		}
 		return model.Task{}, service_errors.ErrServiceNotAvailable
+	}
+
+	if task.GoalID != goalId {
+		s.logger.Error("Error (GetByID): permission denied -> Task is not depended on Goal")
+		return model.Task{}, service_errors.ErrNotFound
 	}
 
 	goal, err := s.repo.Goal.GetByID(ctx, task.GoalID)
@@ -109,35 +114,39 @@ func (s Service) GetByID(ctx context.Context, userId, taskId int) (model.Task, e
 	}
 
 	if goal.UserID != userId {
-		s.logger.Print("permission denied")
+		s.logger.Error("Error (GetByID): permission denied -> Goal user id different")
 		return model.Task{}, service_errors.ErrPermissionDenied
 	}
 
 	return task, nil
 }
 
-func (s Service) UpdateByID(ctx context.Context, userId, taskId int, task dto.UpdateTask) error {
+func (s Service) UpdateByID(ctx context.Context, userId, goalId, taskId int, task dto.UpdateTask) error {
 	if err := task.Validate(); err != nil {
-		s.logger.Error(err)
 		return service_errors.ErrInvalidCredentials
 	}
 
-	_, err := s.GetByID(ctx, userId, taskId)
+	_, err := s.GetByID(ctx, userId, goalId, taskId)
 	if err != nil {
+		s.logger.Errorf("Error (UpdateByID): %v", err)
 		return err
 	}
 
 	err = s.repo.Task.UpdateByID(ctx, taskId, task)
 	if err != nil {
 		s.logger.Error(err)
+		if errors.Is(err, db.ErrConflict) {
+			return service_errors.ErrAlreadyExists
+		}
 		return service_errors.ErrServiceNotAvailable
 	}
 	return nil
 }
 
-func (s Service) DeleteByID(ctx context.Context, userId, taskId int) error {
-	_, err := s.GetByID(ctx, userId, taskId)
+func (s Service) DeleteByID(ctx context.Context, userId, goalId, taskId int) error {
+	_, err := s.GetByID(ctx, userId, goalId, taskId)
 	if err != nil {
+		s.logger.Errorf("Error (DeleteByID): %v", err)
 		return err
 	}
 

@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	ErrInvalidAuthHeader     = errors.New("invalid credentials")
+	ErrInvalidAuthHeader     = errors.New("auth header is empty or not supported by server")
 	ErrUnsupportedAuthHeader = errors.New("unsupported auth header by user")
 	ErrInvalidToken          = errors.New("invalid token")
 	ErrCredentialsNotFound   = errors.New("user info not found")
