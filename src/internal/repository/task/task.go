@@ -40,12 +40,13 @@ func (t Repository) Create(ctx context.Context, goalId int, task dto.CreateTask)
 }
 
 func (t Repository) Get(ctx context.Context, goalId int, listParams dto.ListParams) ([]model.Task, error) {
-	var tasks []model.Task
+	var tasks = []model.Task{}
 	query := `
 		SELECT t.id, t.name, t.description, t.frequency, t.created_at, t.updated_at, t.goal_id
 		FROM tasks t
 		JOIN goals g on g.id = t.goal_id
 		WHERE g.id = $1
+		ORDER BY t.created_at DESC 
 		LIMIT $2 OFFSET $3
 	`
 	var limit = listParams.PageSize
@@ -55,6 +56,7 @@ func (t Repository) Get(ctx context.Context, goalId int, listParams dto.ListPara
 		t.logger.Error(err)
 		return nil, t.db.ParseError(err)
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		var r model.Task
@@ -129,6 +131,7 @@ func (t Repository) UpdateByID(ctx context.Context, taskId int, task dto.UpdateT
 		argID++
 	}
 
+	setValues = append(setValues, fmt.Sprintf("updated_at=now()"))
 	updatedFields := strings.Join(setValues, ", ")
 	updatedFields = fmt.Sprintf("%s WHERE id = %d", updatedFields, taskId)
 	query := fmt.Sprintf("UPDATE tasks SET %s", updatedFields)

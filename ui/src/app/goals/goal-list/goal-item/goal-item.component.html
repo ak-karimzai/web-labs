@@ -1,0 +1,13 @@
+<a
+        style="cursor: pointer;"
+        [routerLink]="[goal.id]"
+        routerLinkActive="active"
+        class="list-group-item clearfix">
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ goal.name }}</h4>
+        <p class="list-group-item-text">{{ goal.description }}</p>
+    </div>
+    <div class="pull-right">
+        <h4 class="list-group-item-heading">{{ goal.completion_status }}</h4>
+    </div>
+</a>

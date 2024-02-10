@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="form-group">
+        <label for="completionStatus">Goals</label>
+        <mat-select
+                *ngIf="goalsPaginator$ | async as goalPage"
+                msInfiniteScroll
+                (infiniteScroll)="loadMoreGoals(goalPage)"
+                [complete]="!goalPage.hasMorePages"
+                id="completionStatus"
+                formControlName="completionStatus"
+                class="form-control"
+                (selectionChange)="onGoalChange($event.value)"
+                #selectedGoal
+        >
+            <mat-option *ngFor="let goal of goalPage.goals" [value]="goal.id">
+                {{ goal.name }}
+            </mat-option>
+        </mat-select>
+    </div>
+</div>
+<div
+  *ngIf="tasksPaginator$ | async as paginator"
+  infinite-scroll
+  (scrolled)="loadMoreTasks(paginator)"
+  [infiniteScrollDistance]="0"
+  [infiniteScrollThrottle]="1000"
+>
+  <app-alert [message]="paginator.error" *ngIf="paginator.error" (close)="onHandleError(paginator)"></app-alert>
+  <div *ngIf="loading$ | async" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button
+                    class="btn btn-success"
+                    (click)="onNewTask()"
+            >New Task</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-12">
+            <app-task-item
+                    *ngFor="let task of paginator.tasks;"
+                    [task]="task"
+                    [goalID]="goalID"
+            ></app-task-item>
+        </div>
+    </div>
+    <br>
+    <div *ngIf="!paginator.hasMorePages" class="text-center">
+        <h4>No more tasks!</h4>
+    </div>
+</div>

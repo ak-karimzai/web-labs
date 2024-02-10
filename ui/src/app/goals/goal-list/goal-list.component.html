@@ -1,0 +1,35 @@
+<div
+    *ngIf="goalsPaginator$ | async as paginator"
+    infinite-scroll
+    (scrolled)="loadMoreGoals(paginator)"
+    [infiniteScrollDistance]="0"
+    [infiniteScrollThrottle]="1000"
+>
+  <app-alert *ngIf="paginator.error" [message]="paginator.error"  (close)="onHandleError(paginator)"></app-alert>
+
+  <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-success" (click)="onNewGoal()">New Goal</button>
+        </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-xs-12">
+            <app-goal-item
+              *ngFor="let goal of paginator.goals"
+              [goal]="goal"
+            ></app-goal-item>
+      </div>
+  </div>
+
+  <div *ngIf="!paginator.hasMorePages">
+    <hr>
+    <div class="text-center">
+      <h4>No more goals!</h4>
+    </div>
+  </div>
+  <hr>
+</div>
+<div *ngIf="loading$ | async" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+</div>

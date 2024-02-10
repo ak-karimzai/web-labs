@@ -32,9 +32,10 @@ func NewHandler(services *service.Service, tokenMaker auth_token.Maker, logger l
 
 func (handler *Handler) InitRoutes(basePath string) *gin.Engine {
 	router := gin.New()
+	router.Use(gin.Logger())
 	router.Use(middleware.Cors())
 
-	api := router.Group(basePath, middleware.Logger())
+	api := router.Group(basePath)
 	{
 		api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 		auth := api.Group("/auth")
@@ -45,21 +46,17 @@ func (handler *Handler) InitRoutes(basePath string) *gin.Engine {
 
 		goals := api.Group("/goals", middleware.UserAuthentication(handler.Maker))
 		{
-			handler.setGoalAndTaskRoutes(goals)
+			goals.POST("/", handler.Goal.Create)
+			goals.GET("/", handler.Goal.Get)
+			goals.GET("/:id", handler.Goal.GetByID)
+			goals.PATCH("/:id", handler.Goal.UpdateByID)
+			goals.DELETE("/:id", handler.Goal.DeleteByID)
+			goals.GET("/:id/tasks", handler.Task.Get)
+			goals.POST("/:id/tasks", handler.Task.Create)
+			goals.GET("/:id/tasks/:task_id", handler.Task.GetByID)
+			goals.PUT("/:id/tasks/:task_id", handler.Task.UpdateByID)
+			goals.DELETE("/:id/tasks/:task_id", handler.Task.DeleteByID)
 		}
 	}
 	return router
-}
-
-func (handler *Handler) setGoalAndTaskRoutes(goal *gin.RouterGroup) {
-	goal.POST("/", handler.Goal.Create)
-	goal.GET("/", handler.Goal.Get)
-	goal.GET("/:id", handler.Goal.GetByID)
-	goal.PATCH("/:id", handler.Goal.UpdateByID)
-	goal.DELETE("/:id", handler.Goal.DeleteByID)
-	goal.GET("/:id/tasks", handler.Task.Get)
-	goal.POST("/:id/tasks", handler.Task.Create)
-	goal.GET("/:id/tasks/:task_id", handler.Task.GetByID)
-	goal.PUT("/:id/tasks/:task_id", handler.Task.UpdateByID)
-	goal.DELETE("/:id/tasks/:task_id", handler.Task.DeleteByID)
 }

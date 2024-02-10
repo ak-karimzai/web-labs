@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-xs-12">
+<!--        <div class="alert alert-danger" *ngIf="error">-->
+<!--            <p>{{ error }}</p>-->
+<!--        </div>-->
+        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
+        <div *ngIf="isLoading" style="text-align: center;">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div *ngIf="!isLoading && !error">
+            <div class="characteristic">
+                <label>Name</label>
+                <h4 class="list-group-item-heading">{{ task.name }}</h4>
+            </div>
+
+            <div class="characteristic">
+                <label cl>Completion Status</label>
+                <h4 class="list-group-item-heading">{{ task.description }}</h4>
+            </div>
+
+            <div class="characteristic">
+                <label>Description</label>
+                <p class="list-group-item-text">{{ task.frequency }}</p>
+            </div>
+
+
+            <div class="characteristic">
+                <label>Created At</label>
+                <h4 class="item">{{ task.created_at | date:"MMM dd, yyyy 'at' hh:mm a" }}</h4>
+            </div>
+
+            <div class="characteristic">
+                <label>Updated At</label>
+                <h4 class="item">{{ task.updated_at | date:"MMM dd, yyyy 'at' hh:mm a" }}</h4>
+            </div>
+            <hr>
+            <div
+                    class="btn-group"
+                    appDropdown>
+                <button
+                        type="button"
+                        class="btn btn-primary dropdown-toggle">
+                    Manage Goal <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a style="cursor: pointer;" (click)="onEditTask()">Edit Goal</a></li>
+                    <li><a style="cursor: pointer;" (click)="onDeleteTask()">Delete Goal</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -44,17 +44,15 @@ func main() {
 		lgr.Fatal(err)
 	}
 
-	if !config.ReadOnly {
-		lgr.Info("migrating database")
-		if err = db.Migrate(config.MigrationUrl,
-			config.DBHost,
-			config.DBPort,
-			config.DBUsername,
-			config.DBName,
-			config.SSLMode,
-			config.DBPassword); err != nil {
-			lgr.Fatal(err)
-		}
+	lgr.Info("migrating database")
+	if err = db.Migrate(config.MigrationUrl,
+		config.DBHost,
+		config.DBPort,
+		config.DBUsername,
+		config.DBName,
+		config.SSLMode,
+		config.DBPassword); err != nil {
+		lgr.Fatal(err)
 	}
 
 	conn, err := db.NewPSQL(config.DBHost,
@@ -91,9 +89,7 @@ func main() {
 		lgr.Errorf("an error occured during closing connection with http server: %s", err.Error())
 	}
 
-	if err := conn.Close(context.Background()); err != nil {
-		lgr.Errorf("an error occured on closing db connection: %s", err.Error())
-	}
+	conn.Close()
 }
 
 func init() {

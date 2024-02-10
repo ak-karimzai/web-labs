@@ -42,12 +42,13 @@ func (g Repository) Create(ctx context.Context, userId int, goal dto.CreateGoal)
 }
 
 func (g Repository) Get(ctx context.Context, userId int, listParams dto.ListParams) ([]model.Goal, error) {
-	var goals []model.Goal
+	var goals = []model.Goal{}
 	query := `
 		SELECT g.id, g.name, g.description, g.completion_status, g.start_date, g.end_date, g.created_at, g.updated_at, g.user_id
 		FROM goals g
 		JOIN users u on u.id = g.user_id
 		WHERE u.id = $1
+		ORDER BY g.created_at DESC 
 		LIMIT $2 OFFSET $3
 	`
 	var limit = listParams.PageSize
@@ -57,6 +58,7 @@ func (g Repository) Get(ctx context.Context, userId int, listParams dto.ListPara
 		g.logger.Error(err)
 		return nil, g.db.ParseError(err)
 	}
+	defer rows.Close()
 
 	for rows.Next() {
 		var goal model.Goal
@@ -135,16 +137,17 @@ func (g Repository) UpdateByID(ctx context.Context, goalId int, update dto.Updat
 
 	if update.TargetDate != nil {
 		setValues = append(setValues, fmt.Sprintf("start_date=$%d", argID))
-		args = append(args, *update.StartDate)
+		args = append(args, update.StartDate.ToStdDate())
 		argID++
 	}
 
 	if update.TargetDate != nil {
 		setValues = append(setValues, fmt.Sprintf("end_date=$%d", argID))
-		args = append(args, *update.TargetDate)
+		args = append(args, update.TargetDate.ToStdDate())
 		argID++
 	}
 
+	setValues = append(setValues, fmt.Sprintf("updated_at=now()"))
 	updatedFields := strings.Join(setValues, ", ")
 	updatedFields = fmt.Sprintf("%s WHERE id = %d", updatedFields, goalId)
 

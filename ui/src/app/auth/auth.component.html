@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+<!--    <div class="alert alert-danger" *ngIf="error">-->
+<!--      <p>{{ error }}</p>-->
+<!--    </div>-->
+      <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
+      <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form  #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+        <div class="form-group" *ngIf="!isLoginMode">
+            <label for="firstName">First Name</label>
+            <input
+                    type="text"
+                    id="firstName"
+                    class="form-control"
+                    ngModel
+                    name="firstName"
+                    required
+                    minlength="6"
+            >
+        </div>
+        <div class="form-group" *ngIf="!isLoginMode">
+            <label for="lastName">Last Name</label>
+            <input
+                    type="text"
+                    id="lastName"
+                    class="form-control"
+                    ngModel
+                    name="lastName"
+                    required
+                    minlength="6"
+            >
+        </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          ngModel
+          name="username"
+          required
+          minlength="6"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+        >
+      </div>
+
+      <div>
+        <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button> |
+        <button class="btn btn-primary" type="button" (click)="onSwitchMode()">{{ isLoginMode ? 'Switch to Sign Up' : 'Switch to Login' }}</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1100,3 +1100,728 @@
 {"level":"error","msg":"already exist","time":"2024-01-25T22:40:52Z"}
 {"level":"info","msg":"http server closes connections","time":"2024-01-25T22:41:31Z"}
 {"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-01-25T22:41:31Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-03T19:55:51Z"}
+{"level":"info","msg":"Server started","time":"2024-02-03T19:55:51Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-03T20:02:43Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-03T20:02:43Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-03T20:03:10Z"}
+{"level":"info","msg":"Server started","time":"2024-02-03T20:03:10Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-03T20:08:13Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-03T20:08:13Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-03T20:08:50Z"}
+{"level":"info","msg":"Server started","time":"2024-02-03T20:08:50Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-03T20:12:53Z"}
+{"level":"error","msg":"Not found","time":"2024-02-03T20:12:53Z"}
+{"level":"error","msg":"not found","time":"2024-02-03T20:12:53Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-03T20:13:24Z"}
+{"level":"error","msg":"Not found","time":"2024-02-03T20:13:24Z"}
+{"level":"error","msg":"not found","time":"2024-02-03T20:13:24Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-03T20:23:32Z"}
+{"level":"error","msg":"Not found","time":"2024-02-03T20:23:32Z"}
+{"level":"error","msg":"not found","time":"2024-02-03T20:23:32Z"}
+{"level":"error","msg":"incorrect first name {} length 0","time":"2024-02-03T20:26:42Z"}
+{"level":"error","msg":"incorrect first name {} length 0","time":"2024-02-03T20:26:42Z"}
+{"level":"error","msg":"incorrect first name {} length 0","time":"2024-02-03T20:29:18Z"}
+{"level":"error","msg":"incorrect first name {} length 0","time":"2024-02-03T20:29:18Z"}
+{"level":"error","msg":"incorrect first name {} length 0","time":"2024-02-03T20:29:41Z"}
+{"level":"error","msg":"incorrect first name {} length 0","time":"2024-02-03T20:29:41Z"}
+{"level":"error","msg":"crypto/bcrypt: hashedPassword is not the hash of the given password","time":"2024-02-03T20:50:31Z"}
+{"level":"error","msg":"service not available","time":"2024-02-03T20:50:31Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"users_username_key\" (SQLSTATE 23505)","time":"2024-02-03T20:50:55Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-03T20:50:55Z"}
+{"level":"error","msg":"already exist","time":"2024-02-03T20:50:55Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-03T22:31:24Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-03T22:31:24Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T06:26:39Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T06:26:39Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-04T06:26:57Z"}
+{"level":"error","msg":"Not found","time":"2024-02-04T06:26:57Z"}
+{"level":"error","msg":"not found","time":"2024-02-04T06:26:57Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-04T06:27:04Z"}
+{"level":"error","msg":"Not found","time":"2024-02-04T06:27:04Z"}
+{"level":"error","msg":"not found","time":"2024-02-04T06:27:04Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"users_username_key\" (SQLSTATE 23505)","time":"2024-02-04T06:33:47Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-04T06:33:47Z"}
+{"level":"error","msg":"already exist","time":"2024-02-04T06:33:47Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"goals_user_id_name_key\" (SQLSTATE 23505)","time":"2024-02-04T06:34:16Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-04T06:34:16Z"}
+{"level":"error","msg":"already exist","time":"2024-02-04T06:34:16Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-04T06:47:42Z"}
+{"level":"error","msg":"Not found","time":"2024-02-04T06:47:42Z"}
+{"level":"error","msg":"not found","time":"2024-02-04T06:47:42Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T06:58:14Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T06:58:14Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T06:58:55Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T06:58:55Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"goals_user_id_name_key\" (SQLSTATE 23505)","time":"2024-02-04T07:04:04Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-04T07:04:04Z"}
+{"level":"error","msg":"already exist","time":"2024-02-04T07:04:04Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T07:07:59Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T07:07:59Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T07:08:21Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T07:08:21Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T07:08:58Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T07:08:58Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T07:09:19Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T07:09:19Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"goals_user_id_name_key\" (SQLSTATE 23505)","time":"2024-02-04T07:11:19Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-04T07:11:19Z"}
+{"level":"error","msg":"already exist","time":"2024-02-04T07:11:19Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"goals_user_id_name_key\" (SQLSTATE 23505)","time":"2024-02-04T07:17:03Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-04T07:17:03Z"}
+{"level":"error","msg":"already exist","time":"2024-02-04T07:17:03Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"goals_user_id_name_key\" (SQLSTATE 23505)","time":"2024-02-04T07:17:05Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-04T07:17:05Z"}
+{"level":"error","msg":"already exist","time":"2024-02-04T07:17:05Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T07:28:31Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T07:28:31Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T07:28:44Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T07:28:44Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T07:30:05Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T07:30:05Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T07:30:10Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T07:30:10Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T07:36:00Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T07:36:00Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T15:57:17Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T15:57:17Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T15:58:53Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T15:58:53Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T15:59:06Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T15:59:06Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T17:02:13Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T17:02:13Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T17:02:40Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T17:02:40Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T17:04:30Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T17:04:30Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T17:04:52Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T17:04:52Z"}
+{"level":"error","msg":"ERROR: duplicate key value violates unique constraint \"users_username_key\" (SQLSTATE 23505)","time":"2024-02-04T19:46:23Z"}
+{"level":"error","msg":"Already exist","time":"2024-02-04T19:46:23Z"}
+{"level":"error","msg":"already exist","time":"2024-02-04T19:46:23Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T19:54:20Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T19:54:20Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T19:55:05Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T19:55:05Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T19:57:56Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T19:57:56Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T19:58:18Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T19:58:18Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:06:34Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:06:34Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:06:56Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:06:56Z"}
+{"level":"error","msg":"crypto/bcrypt: hashedPassword is not the hash of the given password","time":"2024-02-04T20:12:14Z"}
+{"level":"error","msg":"service not available","time":"2024-02-04T20:12:14Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:14:27Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:14:27Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:14:47Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:14:47Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:29:21Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:29:21Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:29:41Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:29:41Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:30:39Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:30:39Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:30:59Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:30:59Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:33:38Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:33:38Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:33:58Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:33:58Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:55:44Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:55:44Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:56:47Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:56:47Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:57:54Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:57:54Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:58:14Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:58:14Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T20:59:41Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T20:59:41Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T20:59:50Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T20:59:50Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T21:01:14Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T21:01:14Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T21:01:35Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T21:01:35Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T21:02:14Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T21:02:14Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-04T21:02:20Z"}
+{"level":"info","msg":"Server started","time":"2024-02-04T21:02:20Z"}
+{"level":"error","msg":"incorrect page_id: 0","time":"2024-02-04T21:08:23Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-04T21:08:23Z"}
+{"level":"error","msg":"incorrect page_id: 0","time":"2024-02-04T21:08:24Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-04T21:08:24Z"}
+{"level":"error","msg":"incorrect page_id: 0","time":"2024-02-04T21:08:24Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-04T21:08:24Z"}
+{"level":"error","msg":"incorrect page_id: 0","time":"2024-02-04T21:09:48Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-04T21:09:48Z"}
+{"level":"error","msg":"incorrect page_id: 0","time":"2024-02-04T21:09:48Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-04T21:09:48Z"}
+{"level":"error","msg":"incorrect page_id: 0","time":"2024-02-04T21:10:22Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-04T21:10:22Z"}
+{"level":"error","msg":"incorrect page_id: 0","time":"2024-02-04T21:10:23Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-04T21:10:23Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-04T21:22:16Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-04T21:22:16Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T07:21:36Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T07:21:36Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T07:23:19Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T07:23:19Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T07:23:33Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T07:23:33Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T07:24:12Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T07:24:12Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T07:24:32Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T07:24:32Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsa sadfsafsaf Progress 06-02-2024 28-02-2024]","time":"2024-02-06T08:02:54Z"}
+{"level":"error","msg":"ERROR: date/time field value out of range: \"28-02-2024\" (SQLSTATE 22008)","time":"2024-02-06T08:02:54Z"}
+{"level":"error","msg":"ERROR: date/time field value out of range: \"28-02-2024\" (SQLSTATE 22008)","time":"2024-02-06T08:02:54Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T08:02:54Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsad sadfsafsaf Progress 06-02-2024 28-02-2024]","time":"2024-02-06T08:05:55Z"}
+{"level":"error","msg":"ERROR: date/time field value out of range: \"28-02-2024\" (SQLSTATE 22008)","time":"2024-02-06T08:05:55Z"}
+{"level":"error","msg":"ERROR: date/time field value out of range: \"28-02-2024\" (SQLSTATE 22008)","time":"2024-02-06T08:05:55Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T08:05:55Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsa sadfsafsaf Progress 06-02-2024 28-02-2024]","time":"2024-02-06T08:06:28Z"}
+{"level":"error","msg":"ERROR: date/time field value out of range: \"28-02-2024\" (SQLSTATE 22008)","time":"2024-02-06T08:06:28Z"}
+{"level":"error","msg":"ERROR: date/time field value out of range: \"28-02-2024\" (SQLSTATE 22008)","time":"2024-02-06T08:06:28Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T08:06:28Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T08:09:36Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T08:09:36Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T08:10:39Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T08:10:39Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsa sadfsafsaf Progress 2024-02-06 00:00:00 +0000 UTC 2024-02-28 00:00:00 +0000 UTC]","time":"2024-02-06T08:10:44Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsa sadfsafsaf Progress 2024-02-06 00:00:00 +0000 UTC 2024-02-28 00:00:00 +0000 UTC]","time":"2024-02-06T08:10:52Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsad sadfsafsaf Progress 2024-02-06 00:00:00 +0000 UTC 2024-02-28 00:00:00 +0000 UTC]","time":"2024-02-06T08:11:03Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsadd sadfsafsaf Progress 2024-02-06 00:00:00 +0000 UTC 2024-02-28 00:00:00 +0000 UTC]","time":"2024-02-06T08:11:10Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsadd sadfsafsaf Progress 2024-02-06 00:00:00 +0000 UTC 2024-02-28 00:00:00 +0000 UTC]","time":"2024-02-06T08:11:25Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsadd sadfsafsaf Progress 2024-02-06 00:00:00 +0000 UTC 2024-02-28 00:00:00 +0000 UTC]","time":"2024-02-06T08:11:29Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsadd sadfsafsaf Progress 2024-02-01 00:00:00 +0000 UTC 2024-02-28 00:00:00 +0000 UTC]","time":"2024-02-06T08:11:38Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5 WHERE id = 10 , args: [sfafsafsadd sadfsafsaf Progress 2024-02-01 00:00:00 +0000 UTC 2024-03-14 00:00:00 +0000 UTC]","time":"2024-02-06T08:11:52Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T08:13:01Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T08:13:01Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T08:13:22Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T08:13:22Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 10 , args: [sfafsafsadd sadfsafsaf Progress 2024-02-01 00:00:00 +0000 UTC 2024-03-14 00:00:00 +0000 UTC]","time":"2024-02-06T08:13:32Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T08:14:04Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T08:14:04Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T08:14:27Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T08:14:27Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T08:15:27Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T08:15:27Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T08:15:39Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T08:15:39Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:26:08Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:26:34Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:26:56Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:28:20Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:29:27Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:29:49Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:39:15Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:41:07Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T09:41:14Z"}
+{"level":"error","msg":"access to entity denied","time":"2024-02-06T09:48:48Z"}
+{"level":"info","msg":"Error (Get): permission denied -\u003e Goal user id are not equal","time":"2024-02-06T11:54:38Z"}
+{"level":"error","msg":"access to entity denied","time":"2024-02-06T11:54:38Z"}
+{"level":"info","msg":"Error (Get): permission denied -\u003e Goal user id are not equal","time":"2024-02-06T11:55:36Z"}
+{"level":"error","msg":"access to entity denied","time":"2024-02-06T11:55:36Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T14:06:07Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T14:06:07Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T14:07:37Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T14:07:37Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:13:17Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:13:17Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:13:17Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:16:27Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:16:27Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:16:27Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:16:53Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:16:53Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:16:53Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:16:57Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:16:57Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:16:57Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:07Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:07Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:07Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:09Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:09Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:09Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:11Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:11Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:11Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:12Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:12Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:12Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:13Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:15Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:15Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:15Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:16Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:16Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:16Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:24Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:24Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:24Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:25Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:25Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:25Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:26Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:26Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:26Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:31Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:17:31Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:17:31Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:20:30Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:20:30Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:20:30Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:21:47Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:21:47Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:21:47Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:21:50Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:21:50Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:21:50Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:21:58Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:21:58Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:21:58Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:09Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:09Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:09Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:10Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:10Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:10Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:11Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:11Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:11Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:12Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:12Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:12Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:13Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:15Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:15Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:15Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:17Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:17Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:17Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:19Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:19Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:19Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:42Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T14:22:42Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T14:22:42Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T14:25:03Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T14:25:03Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T14:25:28Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T14:25:28Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 10 , args: [sfafsafsaddd sadfsafsaf Progress 2024-02-01 00:00:00 +0000 UTC 2024-03-14 00:00:00 +0000 UTC]","time":"2024-02-06T14:27:49Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T14:28:33Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T14:28:33Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T14:28:54Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T14:28:54Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 5 , args: [safasfda goal.description Progress 2023-02-12 00:00:00 +0000 UTC 2024-02-12 00:00:00 +0000 UTC]","time":"2024-02-06T14:29:05Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T14:44:40Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T14:45:40Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T14:53:26Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T14:55:01Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T14:57:10Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T14:57:50Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T14:59:39Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T15:00:11Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T15:00:13Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T15:00:23Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 14 , args: [Quis Majnon Completed 2024-02-05 00:00:00 +0000 UTC 2024-02-27 00:00:00 +0000 UTC]","time":"2024-02-06T15:10:56Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:11:27Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:11:27Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:11:27Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:11:27Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:11:36Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:11:36Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:11:36Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:12Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:12Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:12:12Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:13Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:12:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:13Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:12:13Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:21Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:21Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:12:21Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:21Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:21Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:12:21Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:13:14Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:13:14Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:13:14Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:14:20Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:14:20Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:14:20Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:14:25Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:14:25Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:14:25Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:14:48Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:14:48Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:14:48Z"}
+{"level":"error","msg":"incorrect target date: 22-11-2333","time":"2024-02-06T15:15:16Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-06T15:15:16Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:15:49Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:15:49Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:15:49Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:18:35Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:18:35Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:18:35Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:18:36Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:18:36Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:18:36Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:18:58Z"}
+{"level":"error","msg":"conn busy","time":"2024-02-06T15:18:58Z"}
+{"level":"error","msg":"service not available","time":"2024-02-06T15:18:58Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T15:22:58Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T15:22:58Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-06T15:29:33Z"}
+{"level":"info","msg":"Server started","time":"2024-02-06T15:29:33Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:30:23Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:30:23Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:30:23Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:31:34Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:31:34Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:31:34Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:32:06Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:32:06Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:32:06Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:32:31Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:32:31Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:32:31Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:32:39Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:32:39Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:32:39Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:41:09Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:41:09Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:41:09Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 11 , args: [Quis Lovess Majnonism Progress 2024-02-22 00:00:00 +0000 UTC 2024-03-13 00:00:00 +0000 UTC]","time":"2024-02-06T15:41:22Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 11 , args: [Quis Lovesss Majnonism Progress 2024-02-22 00:00:00 +0000 UTC 2024-03-13 00:00:00 +0000 UTC]","time":"2024-02-06T15:41:28Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T15:41:37Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T15:41:37Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T15:41:37Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 18 , args: [quis sdfsdfsdfв Progress 2023-02-03 00:00:00 +0000 UTC 2023-02-04 00:00:00 +0000 UTC]","time":"2024-02-06T16:10:00Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:10:41Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:10:41Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:10:41Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 20 , args: [Wardak Zinda Bad Zinda Bad Zinda Bad Zinda Bad Zinda Bad  Progress 2023-02-28 00:00:00 +0000 UTC 2023-02-21 00:00:00 +0000 UTC]","time":"2024-02-06T16:11:29Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:17:11Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:17:11Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:17:11Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:24:19Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:24:19Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:24:19Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:25:12Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:25:12Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:25:12Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:27:52Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:27:52Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:27:52Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:28:25Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:28:25Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:28:25Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:31:09Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:31:09Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:31:09Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:31:43Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:31:43Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:31:43Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:32:17Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:32:17Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:32:17Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:32:24Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:32:24Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:32:24Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:36:18Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:36:18Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:36:18Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:36:27Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:36:27Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:36:27Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:42:02Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:42:02Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:42:02Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:46:20Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:46:20Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:46:20Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T16:49:48Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T16:49:48Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T16:49:48Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 18 , args: [quisdd sdfsdfsdfв Progress 2023-02-03 00:00:00 +0000 UTC 2023-02-04 00:00:00 +0000 UTC]","time":"2024-02-06T17:11:17Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:12:32Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:12:32Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:12:32Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:15:15Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:15:15Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:15:15Z"}
+{"level":"error","msg":"strconv.ParseInt: parsing \"NaN\": invalid syntax","time":"2024-02-06T17:17:56Z"}
+{"level":"error","msg":"strconv.ParseInt: parsing \"NaN\": invalid syntax","time":"2024-02-06T17:17:57Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:18:29Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:18:29Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:18:29Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:19:21Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:19:21Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:19:21Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:19:58Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:19:58Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:19:58Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:23:39Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:23:39Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:23:39Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T17:27:30Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:28:05Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:28:05Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:28:05Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T17:28:24Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T17:29:25Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T17:29:25Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T17:29:25Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:05:54Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:05:54Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:05:54Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:05:59Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:05:59Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:05:59Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:06:19Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:06:19Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:06:19Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:34:00Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:34:00Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:34:00Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:35:45Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:35:45Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:35:45Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:38:14Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:38:14Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:38:14Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:40:11Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:40:11Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:40:11Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:41:43Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:41:43Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:41:43Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:42:38Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:42:38Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:42:38Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:42:47Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:42:47Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:42:47Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:55:12Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:55:12Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:55:12Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:56:02Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:56:02Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:56:02Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:58:07Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:58:07Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:58:07Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T19:58:20Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T19:58:52Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T19:58:52Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T19:58:52Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:10:21Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:10:21Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:10:21Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:15:33Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:15:33Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:15:33Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:15:34Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:15:34Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:15:34Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:19:07Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:19:07Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:19:07Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:19:08Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:19:08Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:19:08Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:19:16Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:19:16Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:19:16Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:19:17Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:19:17Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:19:17Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:34:43Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:34:47Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:36:22Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:36:22Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:36:22Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:38:02Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:38:02Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:38:02Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:39:24Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:39:26Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:39:27Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:39:29Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:40:53Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:40:53Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:40:53Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:40:53Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:41:40Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:42:35Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:42:35Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:42:35Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 9, args: [sdfsafasfsadf sdfsadfsadfadf Weekly]","time":"2024-02-06T20:42:40Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 9, args: [sdfsafasfsadfdd sdfsadfsadfadf Weekly]","time":"2024-02-06T20:42:45Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 9, args: [sdfsafasfsadfdd sdfsadfsadfadf Monthly]","time":"2024-02-06T20:42:50Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 6, args: [SDFASFASDFASD sadfsafsafsadf Daily]","time":"2024-02-06T20:43:01Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:43:38Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T20:43:39Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 7, args: [Qusdfsdf sdafasfsad Daily]","time":"2024-02-06T20:43:46Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T20:46:39Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T20:46:39Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T20:46:39Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 8, args: [sdfsafsadfsa sdafsafasfsad Daily]","time":"2024-02-06T20:50:08Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:02:54Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:02:54Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:02:54Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:03:37Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:03:37Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:03:37Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:03:52Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:03:52Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:03:52Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:06:55Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:06:55Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:06:55Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 5, args: [Qdsaffas sadfsadfsadf Daily]","time":"2024-02-06T21:15:35Z"}
+{"level":"error","msg":"Error (GetByID): permission denied -\u003e Task is not depended on Goal","time":"2024-02-06T21:15:39Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:15:39Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:15:49Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:15:49Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:15:49Z"}
+{"level":"error","msg":"Error (GetByID): permission denied -\u003e Task is not depended on Goal","time":"2024-02-06T21:16:03Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:16:03Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:16:25Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:16:25Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:16:25Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 13, args: [Sdafasdfsadf sdafsadgdsfaf Daily]","time":"2024-02-06T21:17:46Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:22:35Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:22:35Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:22:35Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:22:53Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:22:53Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:22:53Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:23:17Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:23:17Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:23:17Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:24:28Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:24:28Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:24:28Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:26:27Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:26:27Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:26:27Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:27:48Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:27:48Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:27:48Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:30:48Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:30:48Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:30:48Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 17, args: [sdfsfsfsafg sdfasfdfa Monthly]","time":"2024-02-06T21:31:04Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 17, args: [sdfsfsfsafg sdfasfdfa Weekly]","time":"2024-02-06T21:31:09Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 17, args: [sdfsfsfsafg sdfasfdfa Monthly]","time":"2024-02-06T21:31:14Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-06T21:33:22Z"}
+{"level":"error","msg":"Not found","time":"2024-02-06T21:33:22Z"}
+{"level":"error","msg":"not found","time":"2024-02-06T21:33:22Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-06T21:34:03Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-06T22:23:02Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-06T22:23:02Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-07T07:30:51Z"}
+{"level":"info","msg":"Server started","time":"2024-02-07T07:30:51Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 11, args: [sdafasdfasdfsadf sdafsafasdfsadfsa Daily]","time":"2024-02-07T07:33:02Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 11, args: [sdafasdfasdfsadf Wardak.com Daily]","time":"2024-02-07T07:33:14Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-07T08:24:26Z"}
+{"level":"info","msg":"Server started","time":"2024-02-07T08:24:26Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-07T08:26:06Z"}
+{"level":"error","msg":"Not found","time":"2024-02-07T08:26:06Z"}
+{"level":"error","msg":"not found","time":"2024-02-07T08:26:06Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 17, args: [sdfsfsfsafg sdfasfdfa Daily]","time":"2024-02-07T08:26:50Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 11, args: [sdafasdfasdfsadf Wardak.comm Daily]","time":"2024-02-07T08:27:17Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-07T08:38:41Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-07T08:39:31Z"}
+{"level":"error","msg":"incorrect goal_id: 0","time":"2024-02-07T08:39:42Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-07T08:48:08Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-07T08:48:08Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-07T12:20:33Z"}
+{"level":"info","msg":"Server started","time":"2024-02-07T12:20:33Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-07T12:23:43Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-07T12:23:43Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-07T12:24:06Z"}
+{"level":"info","msg":"Server started","time":"2024-02-07T12:24:06Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 11, args: [Sdafasdfasdfsadf Wardak.comm Daily]","time":"2024-02-07T15:20:55Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-07T15:23:58Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-07T15:23:58Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-07T15:24:45Z"}
+{"level":"info","msg":"Server started","time":"2024-02-07T15:24:45Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 10, args: [Sdafsadfsafasdf sdfsadfsadfsadfs Weekly]","time":"2024-02-07T15:25:00Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 8, args: [sdfsDfsadfsa sdafsafasfsad Daily]","time":"2024-02-07T15:25:08Z"}
+{"level":"error","msg":"incorrect page_size: 30","time":"2024-02-07T15:29:30Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-07T15:29:30Z"}
+{"level":"error","msg":"incorrect page_size: 30","time":"2024-02-07T15:29:43Z"}
+{"level":"error","msg":"invalid login credentials","time":"2024-02-07T15:29:43Z"}
+{"level":"error","msg":"strconv.ParseInt: parsing \"NaN\": invalid syntax","time":"2024-02-07T17:32:30Z"}
+{"level":"error","msg":"strconv.ParseInt: parsing \"NaN\": invalid syntax","time":"2024-02-07T17:33:25Z"}
+{"level":"error","msg":"strconv.ParseInt: parsing \"NaN\": invalid syntax","time":"2024-02-07T17:33:38Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-07T17:40:12Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-07T17:40:12Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-07T17:40:52Z"}
+{"level":"info","msg":"Server started","time":"2024-02-07T17:40:52Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-07T17:51:06Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-07T17:51:06Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-07T20:17:08Z"}
+{"level":"info","msg":"Server started","time":"2024-02-07T20:17:08Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-07T22:15:41Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-07T22:15:41Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-08T07:43:42Z"}
+{"level":"info","msg":"Server started","time":"2024-02-08T07:43:42Z"}
+{"level":"error","msg":"Error (GetByID): permission denied -\u003e Task is not depended on Goal","time":"2024-02-08T11:39:12Z"}
+{"level":"error","msg":"not found","time":"2024-02-08T11:39:12Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-08T12:39:18Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-08T12:39:18Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-08T15:56:33Z"}
+{"level":"info","msg":"Server started","time":"2024-02-08T15:56:33Z"}
+{"level":"error","msg":"crypto/bcrypt: hashedPassword is not the hash of the given password","time":"2024-02-08T16:13:18Z"}
+{"level":"error","msg":"service not available","time":"2024-02-08T16:13:18Z"}
+{"level":"error","msg":"crypto/bcrypt: hashedPassword is not the hash of the given password","time":"2024-02-08T16:13:23Z"}
+{"level":"error","msg":"service not available","time":"2024-02-08T16:13:23Z"}
+{"level":"error","msg":"strconv.ParseInt: parsing \"NaN\": invalid syntax","time":"2024-02-08T16:31:21Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-08T21:45:20Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-08T21:45:20Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-09T03:32:35Z"}
+{"level":"info","msg":"Server started","time":"2024-02-09T03:32:35Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-09T06:45:46Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-09T07:16:36Z"}
+{"level":"info","msg":"Server started","time":"2024-02-09T07:16:36Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-09T20:35:58Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-09T20:35:58Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-10T13:43:30Z"}
+{"level":"info","msg":"Server started","time":"2024-02-10T13:43:30Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-10T15:02:42Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-10T15:02:42Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-10T15:03:09Z"}
+{"level":"info","msg":"Server started","time":"2024-02-10T15:03:09Z"}
+{"level":"info","msg":"query: UPDATE goals SET name=$1, description=$2, completion_status=$3, start_date=$4, end_date=$5, updated_at=now() WHERE id = 35 , args: [Quis2 Majnon Progress 2012-02-03 00:00:00 +0000 UTC 2024-02-21 00:00:00 +0000 UTC]","time":"2024-02-10T15:14:59Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-10T15:23:36Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-10T15:23:36Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-10T15:23:57Z"}
+{"level":"info","msg":"Server started","time":"2024-02-10T15:23:57Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-10T18:31:24Z"}
+{"level":"info","msg":"Server started","time":"2024-02-10T18:31:24Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-10T19:02:43Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-10T19:02:43Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-10T19:15:59Z"}
+{"level":"info","msg":"Server started","time":"2024-02-10T19:15:59Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-10T20:05:32Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-10T20:05:32Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-10T20:05:50Z"}
+{"level":"info","msg":"Server started","time":"2024-02-10T20:05:50Z"}

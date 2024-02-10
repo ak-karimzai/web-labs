@@ -1,0 +1,14 @@
+<a
+        style="cursor: pointer;"
+        [routerLink]="[task.id]"
+        [queryParams]="{goal_id: goalID}"
+        routerLinkActive="active"
+        class="list-group-item clearfix">
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ task.name }}</h4>
+        <p class="list-group-item-text">{{ task.description }}</p>
+    </div>
+    <div class="pull-right">
+        <h4 class="list-group-item-heading">{{ task.frequency }}</h4>
+    </div>
+</a>
