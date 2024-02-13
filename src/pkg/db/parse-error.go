@@ -3,6 +3,7 @@ package db
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"github.com/jackc/pgx/v5/pgconn"
 	"strings"
 )
@@ -19,7 +20,9 @@ func (db *DB) ParseError(err error) error {
 		return ErrNotFound
 	}
 
-	if pqErr, ok := err.(*pgconn.PgError); ok {
+	var pqErr *pgconn.PgError
+	if errors.As(err, &pqErr) {
+		fmt.Sprint(pqErr.Message, pqErr.Code)
 		switch pqErr.Code {
 		case "23505":
 			err = ErrConflict

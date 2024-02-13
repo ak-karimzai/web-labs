@@ -15,7 +15,7 @@ export class GoalListComponent implements OnInit, OnDestroy {
 
   public loading$ = new BehaviorSubject<boolean>(true);
   private page$ = new BehaviorSubject<number>(1);
-  private pageSize = 10;
+  private pageSize = 12;
   private subscription: Subscription;
 
   constructor(

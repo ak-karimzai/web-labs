@@ -18,10 +18,6 @@ import { GoalListComponent } from './goals/goal-list/goal-list.component';
 import { GoalEditComponent } from './goals/goal-edit/goal-edit.component';
 import { GoalDetailComponent } from './goals/goal-detail/goal-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { GoalsComponent } from './goals/goals.component';
-import { GoalStartComponent } from './goals/goal-start/goal-start.component';
-import { TaskStartComponent } from './tasks/task-start/task-start.component';
 import { GoalItemComponent } from './goals/goal-list/goal-item/goal-item.component';
 import { TaskItemComponent } from './tasks/task-list/task-item/task-item.component';
 import {AlertComponent} from "./alert/alert.component";
@@ -45,10 +41,6 @@ import {MatSelectInfiniteScrollModule} from "ng-mat-select-infinite-scroll";
     GoalEditComponent,
     GoalDetailComponent,
     NotFoundComponent,
-    TasksComponent,
-    GoalsComponent,
-    GoalStartComponent,
-    TaskStartComponent,
     GoalItemComponent,
     TaskItemComponent,
     AlertComponent

@@ -44,12 +44,14 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+      this.saveFormData();
       this.subsription.unsubscribe();
       this.querySubscription.unsubscribe();
   }
 
   onCancel() {
-      this.router.navigate(["../"], {relativeTo: this.route});
+      this.taskForm.reset();
+      this.router.navigate(["../"], {relativeTo: this.route, queryParams: {goal_id: this.goalID}});
   }
 
   onSubmit() {
@@ -72,41 +74,49 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
     subs.subscribe(() => {
         this.taskService.tasksUpdated.next(true);
-        this.router.navigate(['../'], {relativeTo: this.route, queryParams: {goal_id: this.goalID}});
+        this.taskForm.reset();
+        this.onClose();
     }, error => {
         this.error = error;
     })
   }
 
   private initForm() {
-    let taskName: string;
-    let taskDescription: string;
-    let taskFrequency: string;
+    const storedTask = this.taskService.loadFormData();
 
     if (this.editMode) {
        this.taskService.getTaskByID(this.goalID, this.id)
           .subscribe(task => {
-            taskName = task.name;
-            taskDescription = task.description;
-            taskFrequency = task.frequency;
-            this.createForm(taskName, taskDescription, taskFrequency);
+            storedTask.name = task.name;
+            storedTask.description = task.description;
+            storedTask.frequency = task.frequency;
+            this.createForm(storedTask);
           }, error => {
             this.error = error;
             this.isLoading = true;
           });
-    } else {
-      this.createForm(taskName, taskDescription, taskFrequency);
     }
+    this.createForm(storedTask);
   }
-  private createForm(name: string, description: string, frequency: string) {
+  private createForm(formData: {name: string, description: string, frequency: string}) {
     this.taskForm = new FormGroup({
-      'name': new FormControl(name, Validators.required),
-      'description': new FormControl(description, Validators.required),
-      'frequency': new FormControl(frequency),
+      'name': new FormControl(formData.name, Validators.required),
+      'description': new FormControl(formData.description, Validators.required),
+      'frequency': new FormControl(formData.frequency, Validators.required),
     });
   }
 
   onHandleError() {
     this.error = null;
+  }
+
+  private saveFormData() {
+    const formData = this.taskForm.value;
+    this.taskService.saveFormData(formData);
+  }
+
+  onClose() {
+    if (this.editMode) this.taskForm.reset();
+    this.router.navigate(['../'], {relativeTo: this.route, queryParams: {goal_id: this.goalID}});
   }
 }

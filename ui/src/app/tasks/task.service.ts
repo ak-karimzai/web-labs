@@ -10,6 +10,7 @@ import {catchError, map} from "rxjs/operators";
 })
 export class TaskService implements OnInit {
     tasksUpdated: Subject<boolean> = new Subject();
+    private localStorageKey: string = "_taskForm";
 
     constructor(private http: HttpClient) {
     }
@@ -88,4 +89,23 @@ export class TaskService implements OnInit {
         }
         return throwError(errMessage);
     }
+
+  saveFormData(formData: {name: string,
+    description: string,
+    frequency: string})
+  {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(formData));
+  }
+
+  loadFormData(): {name: string,
+    description: string,
+    frequency: string} {
+    const savedFormData = localStorage.getItem(this.localStorageKey);
+    if (savedFormData) {
+      return JSON.parse(savedFormData);
+    }
+    return {name: "",
+      description: "",
+      frequency: ""};
+  }
 }

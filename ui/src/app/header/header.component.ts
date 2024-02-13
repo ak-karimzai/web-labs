@@ -5,12 +5,18 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   goalId: number = 0;
   isAuthenticated: boolean = false;
+  isNavbarCollapsed: boolean = false;
   private userSub: Subscription;
+
+  toggleNavbar(): void {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed; // Toggle the collapse state of the navbar
+  }
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {

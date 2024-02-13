@@ -81,4 +81,8 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
   onHandleError() {
     this.error = null;
   }
+
+  onClose() {
+    this.router.navigate(['../'], {relativeTo: this.route, queryParams: {goal_id: this.goalId}})
+  }
 }

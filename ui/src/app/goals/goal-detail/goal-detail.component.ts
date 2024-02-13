@@ -60,4 +60,8 @@ export class GoalDetailComponent implements OnInit {
   onHandleError() {
     this.error = null;
   }
+
+  onClose() {
+    this.router.navigate(["../"], {relativeTo: this.route})
+  }
 }

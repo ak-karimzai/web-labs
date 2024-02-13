@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, tap} from "rxjs/operators";
 import {BehaviorSubject, throwError} from "rxjs";
 import {Router} from "@angular/router";
-import {User} from "./user.mode";
+import {User} from "./user.model";
 
 export interface AuthResponse {
   message: string;
@@ -24,17 +24,23 @@ export interface LoginResponseData {
 })
 export class AuthService {
   user = new BehaviorSubject<User>(null);
+  private localStorageKey = "_loginForm";
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  signup(firstName: string, lastName: string, username: string, password: string) {
+  signup(signUpData: {
+    firstName: string,
+    lastName: string,
+    username: string,
+    password: string
+  }) {
     return this.http
       .post<AuthResponse>("https://localhost/api/v1/auth/signup", {
-        'first_name': firstName,
-        'last_name': lastName,
-        'username': username,
-        'password': password,
+        'first_name': signUpData.firstName,
+        'last_name': signUpData.lastName,
+        'username': signUpData.username,
+        'password': signUpData.password,
       })
       .pipe(catchError(this.handleError));
   }
@@ -111,5 +117,27 @@ export class AuthService {
         break;
     }
     return throwError(errMessage);
+  }
+
+  saveFormData(formData: {firstName: string,
+                          lastName: string,
+                          username: string,
+                          password: string})
+  {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(formData));
+  }
+
+  loadFormData(): {firstName: string,
+    lastName: string,
+    username: string,
+    password: string} {
+    const savedFormData = localStorage.getItem(this.localStorageKey);
+    if (savedFormData) {
+      return JSON.parse(savedFormData);
+    }
+    return {  firstName: "",
+              lastName: "",
+              username: "",
+              password: ""};
   }
 }

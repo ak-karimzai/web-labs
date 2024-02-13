@@ -1,58 +1,64 @@
-<div class="row">
-    <div class="col-xs-12">
-        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
-        <div *ngIf="isLoading" style="text-align: center;">
-            <app-loading-spinner></app-loading-spinner>
-        </div>
-        <div *ngIf="!isLoading && !error">
-            <div class="characteristic">
-                <label>Name</label>
-                <h4 class="list-group-item-heading">{{ goal.name }}</h4>
-            </div>
+<div class="backdrop" (click)="onClose()"></div>
+<div class="alert-box">
+  <div class="row">
+      <div class="col-xs-12">
+          <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
+          <div *ngIf="isLoading" style="text-align: center;">
+              <app-loading-spinner></app-loading-spinner>
+          </div>
+          <div *ngIf="!isLoading && !error">
+              <div class="characteristic">
+                  <label>Name</label>
+                  <h4 class="list-group-item-heading">{{ goal.name }}</h4>
+              </div>
 
-            <div class="characteristic">
-                <label cl>Completion Status</label>
-                <h4 class="list-group-item-heading">{{ goal.completion_status }}</h4>
-            </div>
+              <div class="characteristic">
+                  <label cl>Completion Status</label>
+                  <h4 class="list-group-item-heading">{{ goal.completion_status }}</h4>
+              </div>
 
-            <div class="characteristic">
-                <label>Description</label>
-                <p class="list-group-item-text">{{ goal.description }}</p>
-            </div>
+              <div class="characteristic">
+                  <label>Description</label>
+                  <p class="list-group-item-text">{{ goal.description }}</p>
+              </div>
 
-            <div class="characteristic">
-                <label>Start Date</label>
-                <h4 class="item">{{ goal.start_date | date:"MMM dd, yyyy" }}</h4>
-            </div>
+              <div class="characteristic">
+                  <label>Start Date</label>
+                  <h4 class="item">{{ goal.start_date | date:"MMM dd, yyyy" }}</h4>
+              </div>
 
-            <div class="characteristic">
-                <label>Target Date</label>
-                <h4 class="item">{{ goal.target_date | date:"MMM dd, yyyy" }}</h4>
-            </div>
+              <div class="characteristic">
+                  <label>Target Date</label>
+                  <h4 class="item">{{ goal.target_date | date:"MMM dd, yyyy" }}</h4>
+              </div>
 
-            <div class="characteristic">
-                <label>Created At</label>
-                <h4 class="item">{{ goal.created_at | date:"MMM dd, yyyy 'at' hh:mm a" }}</h4>
-            </div>
+              <div class="characteristic">
+                  <label>Created At</label>
+                  <h4 class="item">{{ goal.created_at | date:"MMM dd, yyyy 'at' hh:mm a" }}</h4>
+              </div>
 
-            <div class="characteristic">
-                <label>Updated At</label>
-                <h4 class="item">{{ goal.updated_at | date:"MMM dd, yyyy 'at' hh:mm a" }}</h4>
-            </div>
-            <hr>
-            <div
-                    class="btn-group"
-                    appDropdown>
-                <button
-                        type="button"
-                        class="btn btn-primary dropdown-toggle">
-                    Manage Goal <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a style="cursor: pointer;" (click)="onEditGoal()">Edit Goal</a></li>
-                    <li><a style="cursor: pointer;" (click)="onDeleteGoal()">Delete Goal</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+              <div class="characteristic">
+                  <label>Updated At</label>
+                  <h4 class="item">{{ goal.updated_at | date:"MMM dd, yyyy 'at' hh:mm a" }}</h4>
+              </div>
+              <hr>
+              <div
+                      class="btn-group"
+                      appDropdown>
+                  <button
+                          type="button"
+                          class="btn btn-primary dropdown-toggle">
+                      Manage Goal <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                      <li><a style="cursor: pointer;" (click)="onEditGoal()">Edit Goal</a></li>
+                      <li><a style="cursor: pointer;" (click)="onDeleteGoal()">Delete Goal</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="alert-box-actions">
+    <button class="btn btn-primary" (click)="onClose()">Close</button>
+  </div>
 </div>

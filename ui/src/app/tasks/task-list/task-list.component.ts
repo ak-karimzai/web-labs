@@ -20,8 +20,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   public loading$ = new BehaviorSubject<boolean>(true);
   private goalPage$ = new BehaviorSubject<number>(1);
   private taskPage$ = new BehaviorSubject<number>(1);
-  private pageSize = 10;
-  private subscription: Subscription;
+  private pageSize = 12;
 
   private querySubscription: Subscription;
   private updateSubscription: Subscription;
@@ -70,7 +69,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   private loadGoals(): Observable<GoalsPaginator> {
     return this.goalPage$.pipe(
       tap(() => this.loading$.next(true)),
-      switchMap((page) => this.goalService.getGoals(page, this.pageSize)),
+      switchMap((page) => this.goalService.getGoals(page, 7)),
       scan(this.updateGoalsPaginator, {goals: [], page: 0, hasMorePages: true} as GoalsPaginator),
       tap(() => this.loading$.next(false)),
       catchError(err => of({

@@ -1,76 +1,83 @@
-<div class="row">
-    <div class="col-xs-12">
-<!--        <div class="alert alert-danger" *ngIf="error">-->
-<!--            <p>{{ error }}</p>-->
-<!--        </div>-->
-        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
-        <div *ngIf="isLoading" style="text-align: center;">
-            <app-loading-spinner></app-loading-spinner>
-        </div>
-        <form [formGroup]="goalForm" (ngSubmit)="onSubmit()" *ngIf="!error">
-            <div class="row">
+<div class="backdrop" (click)="onClose()"></div>
+<div class="alert-box">
+  <div class="row">
+      <div class="col-xs-12">
+  <!--        <div class="alert alert-danger" *ngIf="error">-->
+  <!--            <p>{{ error }}</p>-->
+  <!--        </div>-->
+          <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
+          <div *ngIf="isLoading" style="text-align: center;">
+              <app-loading-spinner></app-loading-spinner>
+          </div>
+          <form [formGroup]="goalForm" (ngSubmit)="onSubmit()" *ngIf="!error">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="form-group">
+                          <label for="name">Name</label>
+                          <input
+                                  type="text"
+                                  id="name"
+                                  formControlName="name"
+                                  class="form-control">
+                      </div>
+                      <div class="form-group">
+                          <label for="description">Description</label>
+                          <input
+                                  type="text"
+                                  id="description"
+                                  formControlName="description"
+                                  class="form-control">
+                      </div>
+                      <div class="form-group" *ngIf="editMode">
+                          <label for="completionStatus">Completion Status</label>
+                          <select id="completionStatus" formControlName="completionStatus" class="form-control">
+                              <option value="Progress">Progress</option>
+                              <option value="Completed">Completed</option>
+                              <option value="Skipped">Skipped</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <label for="startDate">Start Date</label>
+                          <input
+                                  type="date"
+                                  id="startDate"
+                                  formControlName="startDate"
+                                  class="form-control"
+                                  min="1970-01-01"
+                                  max="2100-01-01">
+                      </div>
+                      <div class="form-group">
+                          <label for="targetDate">Target date</label>
+                          <input
+                                  type="date"
+                                  id="targetDate"
+                                  formControlName="targetDate"
+                                  class="form-control"
+                                  min="1970-01-01"
+                                  max="2100-01-01"
+                          >
+                      </div>
+                  </div>
+              </div>
+              <hr>
+              <div class="row">
                 <div class="col-xs-12">
-                    <button
-                            type="submit"
-                            class="btn btn-success"
-                            [disabled]="!goalForm.valid"
-                    >Save</button> |
-                    <button
-                            type="button"
-                            class="btn btn-danger"
-                            (click)="onCancel()"
-                    >Cancel</button>
+                  <button
+                    type="submit"
+                    class="btn btn-success"
+                    [disabled]="!goalForm.valid"
+                  >Save</button> |
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="onCancel()"
+                  >Cancel</button>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input
-                                type="text"
-                                id="name"
-                                formControlName="name"
-                                class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input
-                                type="text"
-                                id="description"
-                                formControlName="description"
-                                class="form-control">
-                    </div>
-                    <div class="form-group" *ngIf="editMode">
-                        <label for="completionStatus">Completion Status</label>
-                        <select id="completionStatus" formControlName="completionStatus" class="form-control">
-                            <option value="Progress">Progress</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Skipped">Skipped</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="startDate">Start Date</label>
-                        <input
-                                type="date"
-                                id="startDate"
-                                formControlName="startDate"
-                                class="form-control"
-                                min="1970-01-01"
-                                max="2100-01-01">
-                    </div>
-                    <div class="form-group">
-                        <label for="targetDate">Target date</label>
-                        <input
-                                type="date"
-                                id="targetDate"
-                                formControlName="targetDate"
-                                class="form-control"
-                                min="1970-01-01"
-                                max="2100-01-01"
-                        >
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+              </div>
+          </form>
+      </div>
+  </div>
+  <div class="alert-box-actions">
+    <button class="btn btn-primary" (click)="onClose()">Close</button>
+  </div>
 </div>

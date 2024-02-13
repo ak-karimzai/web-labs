@@ -33,10 +33,12 @@ export class GoalEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.saveFromData();
     this.subsription.unsubscribe();
   }
 
   onCancel() {
+    this.goalForm.reset();
     this.router.navigate(["../"], {relativeTo: this.route});
   }
 
@@ -65,6 +67,8 @@ export class GoalEditComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.router.navigate(['../'], {relativeTo: this.route});
         this.goalService.goalsUpdated.next(true);
+        this.goalForm.reset();
+        this.saveFromData();
     }, error => {
         this.error = error;
         this.isLoading = false;
@@ -72,43 +76,51 @@ export class GoalEditComponent implements OnInit, OnDestroy {
   }
 
   private initForm() {
-    let goalName: string;
-    let goalDescription: string;
-    let goalCompletionStatus: string;
-    let goalStartDate: string;
-    let goalTargetDate: string;
-
+    const storedFormData = this.goalService.loadFormData();
     if (this.editMode) {
-      console.log("edit mode");
       this.isLoading = true;
       this.goalService.getGoalById(this.id)
           .subscribe(goal => {
-            goalName = goal.name;
-            goalDescription = goal.description;
-            goalCompletionStatus = goal.completion_status;
-            goalStartDate = new Date(goal.start_date).toISOString().slice(0, -14);
-            goalTargetDate = new Date(goal.target_date).toISOString().slice(0, -14);
-            this.createForm(goalName, goalDescription, goalCompletionStatus, goalStartDate, goalTargetDate);
+            storedFormData.name = goal.name;
+            storedFormData.description = goal.description;
+            storedFormData.completionStatus = goal.completion_status;
+            storedFormData.startDate = new Date(goal.start_date).toISOString().slice(0, -14);
+            storedFormData.targetDate = new Date(goal.target_date).toISOString().slice(0, -14);
+            this.createForm(storedFormData);
             this.isLoading = false;
           }, err => {
             this.error = err;
             this.isLoading = false;
           })
     }
-    this.createForm(goalName, goalDescription, goalCompletionStatus, goalStartDate, goalTargetDate);
+    this.createForm(storedFormData);
   }
 
-  private createForm(goalName: string, goalDescription: string, goalCompletionStatus: string, goalStartDate: string, goalTargetDate: string) {
+  private createForm(formData: { name: string,
+    description: string,
+    completionStatus: string,
+    startDate: string,
+    targetDate: string}) {
     this.goalForm = new FormGroup({
-      'name': new FormControl(goalName, Validators.required),
-      'description': new FormControl(goalDescription, Validators.required),
-      'completionStatus': new FormControl(goalCompletionStatus),
-      'startDate': new FormControl(goalStartDate, Validators.required),
-      'targetDate': new FormControl(goalTargetDate, Validators.required),
+      'name': new FormControl(formData.name, Validators.required),
+      'description': new FormControl(formData.description, Validators.required),
+      'completionStatus': new FormControl(formData.completionStatus),
+      'startDate': new FormControl(formData.startDate, Validators.required),
+      'targetDate': new FormControl(formData.targetDate, Validators.required),
     });
   }
 
   onHandleError() {
     this.error = null;
+  }
+
+  private saveFromData() {
+    const formData = this.goalForm.value;
+    this.goalService.saveFormData(formData);
+  }
+
+  onClose() {
+    if (this.editMode) this.goalForm.reset();
+    this.router.navigate(['../'], {relativeTo: this.route})
   }
 }

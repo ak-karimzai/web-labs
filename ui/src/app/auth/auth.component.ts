@@ -1,5 +1,5 @@
-import {Component} from "@angular/core";
-import {NgForm} from "@angular/forms";
+import {Component, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {AuthResponse, AuthService, LoginResponseData} from "./auth.service";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
@@ -8,12 +8,26 @@ import {Router} from "@angular/router";
   selector: 'app-auth',
   templateUrl: './auth.component.html'
 })
-export class AuthComponent {
-  isLoginMode: boolean = true;
-  isLoading: boolean = false;
-  error: string = null;
+export class AuthComponent implements OnInit, OnDestroy {
+  public isLoginMode: boolean = true;
+  public isLoading: boolean = false;
+  public error: string = null;
+  public formData: {
+    firstName: string,
+    lastName: string,
+    username: string,
+    password: string
+  };
 
   constructor(private authService: AuthService, private router: Router) {
+  }
+
+  ngOnInit() {
+    this.formData = this.authService.loadFormData();
+  }
+
+  ngOnDestroy() {
+    this.authService.saveFormData(this.formData);
   }
 
   onSwitchMode() {
@@ -24,14 +38,10 @@ export class AuthComponent {
     if (!authForm.valid) {
       return;
     }
-    const firstName = authForm.value.firstName;
-    const lastName = authForm.value.lastName;
-    const username = authForm.value.username;
-    const password = authForm.value.password;
 
     this.isLoading = true;
     if (this.isLoginMode) {
-      this.authService.login(username, password).subscribe(
+      this.authService.login(this.formData.username, this.formData.password).subscribe(
           () => {
             this.isLoading = false;
             this.router.navigate(['/goals']);
@@ -41,7 +51,7 @@ export class AuthComponent {
           }
       )
     } else {
-      this.authService.signup(firstName, lastName, username, password)
+      this.authService.signup(this.formData)
           .subscribe(() => {
                 this.isLoading = false;
               },
@@ -52,6 +62,8 @@ export class AuthComponent {
     }
 
     authForm.reset();
+
+    this.authService.saveFormData(this.formData);
   }
 
   onHandleError() {

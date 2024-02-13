@@ -8,23 +8,19 @@ import {TaskEditComponent} from "./tasks/task-edit/task-edit.component";
 import {TaskDetailComponent} from "./tasks/task-detail/task-detail.component";
 import {GoalEditComponent} from "./goals/goal-edit/goal-edit.component";
 import {GoalDetailComponent} from "./goals/goal-detail/goal-detail.component";
-import {TasksComponent} from "./tasks/tasks.component";
-import {GoalsComponent} from "./goals/goals.component";
-import {TaskStartComponent} from "./tasks/task-start/task-start.component";
-import {GoalStartComponent} from "./goals/goal-start/goal-start.component";
+import {TaskListComponent} from "./tasks/task-list/task-list.component";
+import {GoalListComponent} from "./goals/goal-list/goal-list.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/goals', pathMatch: 'full' },
-  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard],
+  { path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', component: TaskStartComponent },
       { path: 'new', component: TaskEditComponent },
       { path: ':id', component: TaskDetailComponent },
       { path: ':id/edit', component: TaskEditComponent },
     ] },
-  { path: 'goals', component: GoalsComponent, canActivate: [AuthGuard],
+  { path: 'goals', component: GoalListComponent, canActivate: [AuthGuard],
     children: [
-      { path: '', component: GoalStartComponent },
       { path: 'new', component: GoalEditComponent },
       { path: ':id', component: GoalDetailComponent },
       { path: ':id/edit', component: GoalEditComponent },

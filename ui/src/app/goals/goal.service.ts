@@ -10,6 +10,7 @@ import {catchError, map} from "rxjs/operators";
 export class GoalService {
     selectedGoalId: BehaviorSubject<number>;
     goalsUpdated: Subject<boolean>;
+    private localStorageKey: string = "_goalForm";
 
     constructor(private http: HttpClient) {
         this.selectedGoalId = new BehaviorSubject<number>(null);
@@ -104,4 +105,29 @@ export class GoalService {
         }
         return throwError(errMessage);
     }
+
+  saveFormData(formData: {name: string,
+    description: string,
+    completionStatus: string,
+    startDate: string,
+    targetDate: string})
+  {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(formData));
+  }
+
+  loadFormData(): {name: string,
+    description: string,
+    completionStatus: string,
+    startDate: string,
+    targetDate: string} {
+    const savedFormData = localStorage.getItem(this.localStorageKey);
+    if (savedFormData) {
+      return JSON.parse(savedFormData);
+    }
+    return {name: "",
+      description: "",
+      completionStatus: "",
+      startDate: "",
+      targetDate: ""};
+  }
 }

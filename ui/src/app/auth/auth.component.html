@@ -14,8 +14,8 @@
                     type="text"
                     id="firstName"
                     class="form-control"
-                    ngModel
                     name="firstName"
+                    [(ngModel)]="formData.firstName"
                     required
                     minlength="6"
             >
@@ -26,8 +26,8 @@
                     type="text"
                     id="lastName"
                     class="form-control"
-                    ngModel
                     name="lastName"
+                    [(ngModel)]="formData.lastName"
                     required
                     minlength="6"
             >
@@ -38,8 +38,8 @@
           type="text"
           id="username"
           class="form-control"
-          ngModel
           name="username"
+          [(ngModel)]="formData.username"
           required
           minlength="6"
         >
@@ -51,13 +51,12 @@
           type="password"
           id="password"
           class="form-control"
-          ngModel
           name="password"
+          [(ngModel)]="formData.password"
           required
           minlength="6"
         >
       </div>
-
       <div>
         <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button> |
         <button class="btn btn-primary" type="button" (click)="onSwitchMode()">{{ isLoginMode ? 'Switch to Sign Up' : 'Switch to Login' }}</button>
