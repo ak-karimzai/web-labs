@@ -23,17 +23,17 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd src/
+          cd ./src/
           go mod download
 
       - name: Test
         run: |
-          cd src/
+          cd ./src/
           go test ./...
 
       - name: Build
         run: |
-          cd src/
+          cd ./src/
           go build -o /server ./main.go
 
   package:
@@ -48,7 +48,7 @@ jobs:
       - name: Copy Build Artifacts
         run: |
           mkdir -p build
-          cp src/server .env src/schema src/start.sh src/wait-for.sh build/
+          cp ./src/server .env ./src/schema ./src/start.sh ./src/wait-for.sh ./build/
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -63,5 +63,5 @@ jobs:
       - name: Start Server
         working-directory: ./build  # Change working directory to the build directory
         run: |
-          cd src/
+          cd ./src/
           ./start.sh
