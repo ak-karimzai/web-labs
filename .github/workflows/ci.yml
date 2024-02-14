@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: |
           cd ./src/
-          go build -o /server ./cmd/web/main.go
+          go build -o ./server ./cmd/web/main.go
 
   package:
     runs-on: ubuntu-latest
