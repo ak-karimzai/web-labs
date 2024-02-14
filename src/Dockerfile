@@ -1,67 +1,19 @@
-name: Build and Test
+FROM golang:1.21.5-alpine3.19 AS builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+RUN go build -o /server ./cmd/web/main.go
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+FROM alpine:3.18.2 AS final
+WORKDIR /app
+COPY .env .
+COPY schema /app/schema
+COPY --from=builder /server .
+COPY start.sh .
+COPY wait-for.sh .
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Go
-        uses: actions/setup-go@v2
-        with:
-          go-version: 1.21.5
-
-      - name: Install Dependencies
-        run: |
-          cd src/
-          go mod download
-
-      - name: Test
-        run: |
-          cd src/
-          go test ./...
-
-      - name: Build
-        run: |
-          cd src/
-          go build -o /server ./main.go
-
-  package:
-    runs-on: ubuntu-latest
-
-    needs: build
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Copy Build Artifacts
-        run: |
-          mkdir -p build
-          cp src/server .env src/schema src/start.sh src/wait-for.sh build/
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Build Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: Dockerfile
-          platforms: linux/amd64
-
-      - name: Start Server
-        working-directory: ./build  # Change working directory to the build directory
-        run: |
-            cd src/
-            ./start.sh
+EXPOSE 3000
+CMD ["./server"]
+ENTRYPOINT ["./app/start.sh"]

@@ -63,5 +63,5 @@ jobs:
       - name: Start Server
         working-directory: ./build  # Change working directory to the build directory
         run: |
-            cd src/
-            ./start.sh
+          cd src/
+          ./start.sh
