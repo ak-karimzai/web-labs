@@ -1,21 +1,48 @@
-FROM golang:1.21.5-alpine3.19 AS builder
-WORKDIR /app
-COPY go.mod go.sum ./
-RUN go mod download
-COPY . .
+name: Build and Test
 
-RUN go test ./...
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
-RUN go build -o /server ./cmd/web/main.go
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-FROM alpine:3.18.2 AS final
-WORKDIR /app
-COPY .env .
-COPY schema /app/schema
-COPY --from=builder /server .
-COPY start.sh .
-COPY wait-for.sh .
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-EXPOSE 3000
-CMD ["./server"]
-ENTRYPOINT ["./app/start.sh"]
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.21.5
+
+      - name: Install Dependencies
+        run: |
+          go mod download
+
+      - name: Test
+        run: |
+          go test ./...
+
+      - name: Build
+        run: |
+          go build -o server ./cmd/web/main.go
+
+  package:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Copy Build Artifacts
+        run: |
+          mkdir -p build
+          cp server .env schema start.sh wait-for.sh build/
