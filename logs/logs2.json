@@ -1224,3 +1224,16 @@
 {"level":"info","msg":"Server started","time":"2024-02-11T21:58:21Z"}
 {"level":"info","msg":"http server closes connections","time":"2024-02-11T21:59:37Z"}
 {"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-11T21:59:37Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-14T09:15:35Z"}
+{"level":"info","msg":"Server started","time":"2024-02-14T09:15:35Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-14T09:15:47Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-14T09:15:47Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-14T09:16:20Z"}
+{"level":"info","msg":"Server started","time":"2024-02-14T09:16:20Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-14T09:16:30Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-14T09:16:30Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-14T09:16:34Z"}
+{"level":"info","msg":"Server started","time":"2024-02-14T09:16:34Z"}
+{"level":"error","msg":"no rows in result set","time":"2024-02-14T10:38:09Z"}
+{"level":"error","msg":"Not found","time":"2024-02-14T10:38:09Z"}
+{"level":"error","msg":"not found","time":"2024-02-14T10:38:09Z"}

@@ -4,6 +4,8 @@ COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
 
+RUN go test ./...
+
 RUN go build -o /server ./cmd/web/main.go
 
 FROM alpine:3.18.2 AS final

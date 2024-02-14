@@ -2027,3 +2027,15 @@
 {"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 18, args: [sdfasdfsdafs sdfsdfafsdfa Weekly]","time":"2024-02-11T21:59:26Z"}
 {"level":"info","msg":"http server closes connections","time":"2024-02-11T21:59:37Z"}
 {"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-11T21:59:37Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-14T09:15:35Z"}
+{"level":"info","msg":"Server started","time":"2024-02-14T09:15:35Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-14T09:15:47Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-14T09:15:47Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-14T09:16:19Z"}
+{"level":"info","msg":"Server started","time":"2024-02-14T09:16:19Z"}
+{"level":"info","msg":"http server closes connections","time":"2024-02-14T09:16:30Z"}
+{"level":"fatal","msg":"an error occured during start of server: http: Server closed","time":"2024-02-14T09:16:30Z"}
+{"level":"info","msg":"migrating database","time":"2024-02-14T09:16:34Z"}
+{"level":"info","msg":"Server started","time":"2024-02-14T09:16:34Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 14, args: [sdfasfasdfasdf sdafsafsadfsda Monthly]","time":"2024-02-14T10:36:59Z"}
+{"level":"info","msg":"query: UPDATE tasks SET name=$1, description=$2, frequency=$3, updated_at=now() WHERE id = 20, args: [QuisQuis Majnon Weekly]","time":"2024-02-14T10:37:55Z"}

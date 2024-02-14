@@ -25,6 +25,8 @@ func TestEmptyDescription(t *testing.T) {
 	var createGoal = CreateGoal{
 		Name:        util.RandomString(6),
 		Description: "",
+		StartDate:   "01-01-2023",
+		TargetDate:  "01-01-2024",
 	}
 
 	require.Nil(t, createGoal.Validate())

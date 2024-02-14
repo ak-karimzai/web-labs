@@ -34,24 +34,24 @@ services:
     ports:
       - "8000:3000"
 
-  mirror-server:
-    build:
-      context: ./src
-      dockerfile: Dockerfile
-    environment:
-      SERVER_PORT: 80
-      DB_HOST: psql-slave
-      DB_USERNAME: root
-      DB_PASSWORD: root
-      DB_DBNAME: goal-tracker
-      GIN_MODE: release
-      LOGGER_FILE_PATH: ./logs/logs.json
-      BASE_PATH: /mirror/api/v1
-    working_dir: /app
-    entrypoint: [ "/app/wait-for.sh", "psql-slave:5432", "--", "/app/start.sh" ]
-    command: [ "/app/server" ]
-    depends_on: [ psql-slave ]
-    volumes: [ "./logs/mirror-logs.json:/app/logs/logs.json" ]
+#  mirror-server:
+#    build:
+#      context: ./src
+#      dockerfile: Dockerfile
+#    environment:
+#      SERVER_PORT: 80
+#      DB_HOST: psql-slave
+#      DB_USERNAME: root
+#      DB_PASSWORD: root
+#      DB_DBNAME: goal-tracker
+#      GIN_MODE: release
+#      LOGGER_FILE_PATH: ./logs/logs.json
+#      BASE_PATH: /mirror/api/v1
+#    working_dir: /app
+#    entrypoint: [ "/app/wait-for.sh", "psql-slave:5432", "--", "/app/start.sh" ]
+#    command: [ "/app/server" ]
+#    depends_on: [ psql-slave ]
+#    volumes: [ "./logs/mirror-logs.json:/app/logs/logs.json" ]
 
   psql:
     build:
@@ -60,12 +60,12 @@ services:
     container_name: psql
     volumes: [ "/home/khalid/uni/7sem/web-labs/data:/var/lib/postgresql/data" ]
 
-  psql-slave:
-    build:
-      context: ./database
-      dockerfile: Dockerfile
-    container_name: psql-slave
-    volumes: [ "/home/khalid/uni/7sem/web-labs/data-slave:/var/lib/postgresql/data" ]
+#  psql-slave:
+#    build:
+#      context: ./database
+#      dockerfile: Dockerfile
+#    container_name: psql-slave
+#    volumes: [ "/home/khalid/uni/7sem/web-labs/data-slave:/var/lib/postgresql/data" ]
 
   pgadmin:
     container_name: pgadmin4
@@ -94,7 +94,7 @@ services:
       - "server1:server1"
       - "server2:server2"
       - "server3:server3"
-      - "mirror-server:mirror-server"
+#      - "mirror-server:mirror-server"
       - "pgadmin:pgadmin"
     depends_on: [ server1, server2, server3, pgadmin ]
 
